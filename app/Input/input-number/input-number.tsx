@@ -1,17 +1,17 @@
 import React from "react";
 import { TextInput, View, Text } from "react-native";
 import InputErrorMessage from "../input-error/input-error";
-import { InputEmailController } from "./input-email-controller";
-import { PropsInputEmail } from "./input-email-props";
+import { InputNumberController } from "./input-number-controller";
+import { PropsInputNumber } from "./input-number-props";
 
 /**
- * Élément permettant de récupérer un input de type email, accompagné d'un style prédéfini, et de pouvoir stocker la valeur de l'utilisateur en le stockant dans une instance de la classe InputEmailComponent
+ * Élément permettant de récupérer un input de type texte, accompagné d'un style prédéfini, et de pouvoir stocker la valeur de l'utilisateur en le stockant dans une instance de la classe InputText
  * 
  * ---
  * ---
  * 
- * `PropsInputEmail` : Interface composée de :
- * * `input` *(InputEmailComponent)* : Instance de la classe InputEmailComponent permettant de stocker les informations relatives à cet input.
+ * `PropsInputNumber` : Interface composée de :
+ * * `input` *(InputNumberComponent)* : Instance de la classe InputNumberComponent permettant de stocker les informations relatives à cet input.
  * * `containerStyle?` *(StyleProp<ViewStyle>)* : Correspond au style contenant l'entièreté de l'input, i.e. le label, la saisie et l'erreur.
  * * `labelStyle?` *(StyleProp<TextStyle>)* : Correspond au style associé au label d'un input.
  * * `textInputStyle?` *(StyleProp<TextStyle>)* : Correpond au style relatif à la saisie.
@@ -21,13 +21,13 @@ import { PropsInputEmail } from "./input-email-props";
  * ---
  * ---
  * 
- * @param props `PropsInputEmail`
- * @returns Composant InputEmail
+ * @param props `PropsInputNumber`
+ * @returns Composant InputText
  */
-const InputEmail: React.FC<PropsInputEmail> = (props: PropsInputEmail): JSX.Element => {
+const InputNumber: React.FC<PropsInputNumber> = (props: PropsInputNumber): JSX.Element => {
 
-    const inputEmailController: InputEmailController
-        = InputEmailController.getInstance();
+    const inputNumberController: InputNumberController
+        = InputNumberController.getInstance();
 
     const [borderWidth, setBorderWidth]: [number, React.Dispatch<React.SetStateAction<number>>]
         = React.useState(0.5)
@@ -42,7 +42,7 @@ const InputEmail: React.FC<PropsInputEmail> = (props: PropsInputEmail): JSX.Elem
             </Text>
             <TextInput
                 style = { [props.textInputStyle, {borderBottomWidth: borderWidth}] }
-                onChangeText = { (value: string) => inputEmailController.onInputTextChange(props, value, setError) }
+                onChangeText = { (value: string) => inputNumberController.onInputNumberChange(props, value, setError) }
                 placeholderTextColor = { props.placeholderTextColor }
                 placeholder = { props.input.getPlaceholder }
                 // Permet de grossir la bordure du bas de l'input lorsqu'il y a focus sur celui - ci.
@@ -61,4 +61,4 @@ const InputEmail: React.FC<PropsInputEmail> = (props: PropsInputEmail): JSX.Elem
     
 }
 
-export default InputEmail;
+export default InputNumber;

@@ -16,6 +16,7 @@ import { PropsInputText } from "./input-text-props";
  * * `labelStyle?` *(StyleProp<TextStyle>)* : Correspond au style associé au label d'un input.
  * * `textInputStyle?` *(StyleProp<TextStyle>)* : Correpond au style relatif à la saisie.
  * * `placeholderTextColor?` *(ColorValue)* : Correspond au style associé au placeholder.
+ * * `errorStyle?` *(StyleProp<TextStyle>)* : Correspond au style relatif à un message d'erreur.
  * 
  * ---
  * ---

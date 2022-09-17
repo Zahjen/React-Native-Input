@@ -1,5 +1,5 @@
 import { IInputBaseComponentOption } from "../interface/input-base";
-import { InputComponent } from "./input";
+import { InputComponent } from "./input-component";
 
 /**
  * Classe relative à un input pouvant être accompagné d'une erreur et pouvant être requis.
