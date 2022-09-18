@@ -18,7 +18,6 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
  * * `date` *(InputDateTime)* : Instance de la classe InputDateTime permettant de stocker les informations relatives à cet input.
  * * `icon` *(string)* : Icon associé à l'input de sélection de date / heure, e.g. un calendrier, une horloge, ...
  * * `mode` *("date" | "time" | "datetime" | undefined)* : Correspond à ce qui doit être séléctionné, i.e. une date, une heure, une date et une heure.
- * * `title` *(string)* : Correspond à l'indication de sélection, e.g. "Sélectionner une date", "Sélectionner une heure", ...
  * * `datePickerContainerStyle?` *(StyleProp<ViewStyle>)* : Style relatif au container (label + date picker) de la saisie d'une date.
  * * `labelTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au label, donc permettant l'affichage d'une indication.
  * * `spaceLabelPicker?` *(number)* : La taille de l'espace séparant le label et le bouton permettant la sélection d'une date / heure.
