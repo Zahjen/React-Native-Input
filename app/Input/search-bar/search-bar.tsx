@@ -48,7 +48,8 @@ SearchBarComponent.defaultProps = {
         borderColor: "#3d3d3d",
         borderWidth: 0.5,
         borderRadius: 30,
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
+        paddingVertical: 10
     }
 }
 

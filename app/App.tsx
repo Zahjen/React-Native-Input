@@ -1,50 +1,30 @@
-import { StyleSheet, View } from 'react-native';
+import { Button, StyleSheet, View } from 'react-native';
 import { EInputType } from './Input/global/enumeration/input-type';
-import { Answer } from './Input/global/input/answer';
-import InputDropdown from './Input/input-dropdown/input-dropdown';
-import { InputDropdownComponent } from './Input/input-dropdown/input-dropdown-component';
-import InputRadioButton from './Input/input-radio-button/input-radio-button';
-import { InputRadioButtonComponent } from './Input/input-radio-button/input-radio-button-component';
+import InputDateTime from './Input/input-date-time/input-date-time';
+import { InputDateTimeComponent } from './Input/input-date-time/input-date-time-component';
 
-let input = new InputDropdownComponent({
-  key: "address_visibleLodgingState",
-  label: "État visible du logement",
-  type: EInputType.RADIO_COLUMN,
-  title: 'un titre de dropdown',
-  value: new Answer({
-      id: 0,
-      key: "Select",
-      value: "Slect"
-  }),
-  answers: [
-      new Answer({
-          id: 1,
-          key: "Occupé",
-          value: "Occupé"
-      }),
-      new Answer({
-          id: 2,
-          key: "Abandonné",
-          value: "Abandonné"
-      }),
-      new Answer({
-          id: 3,
-          key: "Indeterminé",
-          value: "Indeterminé"
-      })
-  ]
+let input = new InputDateTimeComponent({
+  value: new Date(),
+  key: 'meet_date',
+  type: EInputType.DATE,
+  label: 'Sélectionner une date'
 })
 
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <InputDropdown 
-        input={input} 
-        selectedItemBackgroundColor = {'green'}
-        selectedItemBorderColor = {"red"}
-        listHeaderComponentStyleBackgroundColor = {"white"}
-        modalBackgroundColor = {"white"}
+      <InputDateTime 
+        date={input} 
+        icon={"date"} 
+        mode={"date"}    
+      />
+
+      <Button
+        title='press me'
+        onPress={() => {
+          console.log(input.getValue.getHours())
+        }}
       />
     </View>
   );
