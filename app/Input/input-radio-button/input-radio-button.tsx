@@ -25,8 +25,7 @@ import { IMargin } from "../global/interface/margin";
  * * `unselectedRadioColor` (string) : Couleur de l'icon associé au bouton radio lorsque celui - ci n'est pas sélectionné.
  * * `circleRadioSize?` (number) : Taille de l'icon associé au bouton radio.
  * * `marginRadioRight?` (number) : Marge droite de l'icon associé au bouton radio.
- * * `radioTextColor?` (string) : La couleur du texte associé à l'ensemble des bouton radio.
- * * `radioTextFontSize?` (number) : La taille de police du texte associé à l'ensemble des bouton radio.
+ * * `radioTextStyle?` (StyleProp<TextStyle>) : Style relatif au texte associé à un bouton radio.
  * 
  * ---
  * ---
@@ -53,10 +52,7 @@ export const RadioButtonElement: React.FC<PropsRadioButtonElement> = (props: Pro
                         marginRight: props.marginRadioRight
                     }}
                 />
-                <Text style = {{
-                    color: props.radioTextColor,
-                    fontSize: props.radioTextFontSize,
-                }}> 
+                <Text style = { props.radioTextStyle }> 
                     { props.label } 
                 </Text>
             </View>
@@ -79,8 +75,7 @@ export const RadioButtonElement: React.FC<PropsRadioButtonElement> = (props: Pro
  * * `unselectedRadioColor` (string) : Couleur de l'icon associé au bouton radio lorsque celui - ci n'est pas sélectionné.
  * * `circleRadioSize?` (number) : Taille de l'icon associé au bouton radio.
  * * `marginRadioRight?` (number) : Marge droite de l'icon associé au bouton radio.
- * * `radioTextColor?` (string) : La couleur du texte associé à l'ensemble des bouton radio.
- * * `radioTextFontSize?` (number) : La taille de police du texte associé à l'ensemble des bouton radio.
+ * * `radioTextStyle?` (StyleProp<TextStyle>) : Style relatif au texte associé à un bouton radio.
  * * `errorStyle?` (StyleProp<ViewStyle>) : Le style associé à l'affichage d'une erreur.
  * 
  * ---
@@ -121,8 +116,7 @@ const InputRadioButton: React.FC<PropsInputRadioButton<InputRadioButtonComponent
                             unselectedRadioColor = { props.unselectedRadioColor! } 
                             circleRadioSize = { props.circleRadioSize } 
                             marginRadioRight = { props.marginRadioRight } 
-                            radioTextColor = { props.radioTextColor } 
-                            radioTextFontSize = { props.radioTextFontSize }/>
+                            radioTextStyle = { props.radioTextStyle }/>
                     );
                 }) }
             </View>

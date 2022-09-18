@@ -22,8 +22,13 @@ import { PropsSearchBarComponent } from "./search-bar-props";
  * 
  * ```
  * SearchBarComponent.defaultProps = {
- *  styleText: text(),
- *  styleContainer: input(0.5).searchBar
+ *  styleContainer: {
+ *      borderColor: "#3d3d3d",
+ *      borderWidth: 0.5,
+ *      borderRadius: 30,
+ *      paddingHorizontal: 20,
+ *      paddingVertical: 10
+ *  }
  * }
  * ```
  * 

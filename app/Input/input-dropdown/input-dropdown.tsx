@@ -21,6 +21,9 @@ import { PropsInputDropdown, PropsItemInputDropDown, PropsItemListInputDropDown 
  * * `input` *(InputDropdownComponent)* : Une instance de la classe InputDropdownComponent.
  * * `setTitle` *(React.Dispatch<React.SetStateAction<string>>)* : Permet de mettre à jour le titre du modal.
  * * `setError` *(React.Dispatch<React.SetStateAction<string>>)* : Permet de mettre à jour l'erreur relative à la liste déroulante.
+ * * `selectedItemStyle?` *(StyleProp<ViewStyle>)* : Le style associé à un item sélectionné.
+ * * `unselectedItemStyle?` *(StyleProp<ViewStyle>)* : Le style associé à un item non sélectionné.
+ * * `itemTextStyle?` *(StyleProp<TextStyle>)* : Le style du texte associé à un item.
  * 
  * ---
  * ---
@@ -37,21 +40,8 @@ const ItemElement: React.FC<PropsItemInputDropDown> = ( props: PropsItemInputDro
         = props.item === props.input.getValue;
 
     const style: StyleProp<ViewStyle> = isSelected 
-        ? {
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "flex-start",
-            backgroundColor: props.selectedItemBackgroundColor,
-            borderColor: props.selectedItemBorderColor,
-            borderWidth: 0.5,
-            borderRadius: 7,
-            paddingHorizontal: 10
-        } 
-        : {
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "flex-start"
-        };
+        ? props.selectedItemStyle 
+        : props.unselectedItemStyle;
 
     return (
         <Pressable 
@@ -59,10 +49,7 @@ const ItemElement: React.FC<PropsItemInputDropDown> = ( props: PropsItemInputDro
             style = { style }
             onPress = { () => inputDropdownController.onDropdownChange(props) }
         >
-            <Text style = {{
-                color: props.itemTextColor,
-                fontSize: props.itemTextFontSize
-            }}>
+            <Text style = { props.itemTextStyle }>
                 {props.item.getValue}
             </Text>
             <Spacer height = { 40 }/>
@@ -81,6 +68,10 @@ const ItemElement: React.FC<PropsItemInputDropDown> = ( props: PropsItemInputDro
  * * `input` *(InputDropdownComponent)* : Une instance de la classe InputDropdownComponent.
  * * `setTitle` *(React.Dispatch<React.SetStateAction<string>>)* : Permet de mettre à jour le titre du modal.
  * * `setError` *(React.Dispatch<React.SetStateAction<string>>)* : Permet de mettre à jour l'erreur relative à la liste déroulante.
+ * * `selectedItemStyle?` *(StyleProp<ViewStyle>)* : Le style associé à un item sélectionné.
+ * * `unselectedItemStyle?` *(StyleProp<ViewStyle>)* : Le style associé à un item non sélectionné.
+ * * `itemTextStyle?` *(StyleProp<TextStyle>)* : Le style du texte associé à un item.
+ * * `listHeaderComponentStyleBackgroundColor?` *(string)* : La couleur de fond associé au header de la flatlist.
  * 
  * ---
  * ---
@@ -106,10 +97,9 @@ const ItemElement: React.FC<PropsItemInputDropDown> = ( props: PropsItemInputDro
                     setTitle = { props.setTitle }
                     input = { props.input }
                     setError = { props.setError }
-                    selectedItemBackgroundColor = { props.selectedItemBackgroundColor }
-                    selectedItemBorderColor = { props.selectedItemBorderColor }
-                    itemTextColor = { props.itemTextColor }
-                    itemTextFontSize = { props.itemTextFontSize }
+                    selectedItemStyle = { props.selectedItemStyle }
+                    unselectedItemStyle = { props.unselectedItemStyle }
+                    itemTextStyle = { props.itemTextStyle }
                 />
             } }
             keyExtractor = { data => `${data.getKey + data.getId}` }
@@ -135,6 +125,18 @@ const ItemElement: React.FC<PropsItemInputDropDown> = ( props: PropsItemInputDro
  * 
  * `PropsInputDropdown` : Interface composée de :
  * * `input` *(InputDropdownComponent)* : Une instance de la classe InputDropdownComponent.
+ * * `selectedItemStyle?` *(StyleProp<ViewStyle>)* : Le style associé à un item sélectionné.
+ * * `unselectedItemStyle?` *(StyleProp<ViewStyle>)* : Le style associé à un item non sélectionné.
+ * * `itemTextStyle?` *(StyleProp<TextStyle>)* : Le style du texte associé à un item.
+ * * `listHeaderComponentStyleBackgroundColor?` *(string)* : La couleur de fond associé au header de la flatlist.
+ * * `inputDropdownCurrentSelectionTextStyle` *(StyleProp<TextStyle>)* : Le style du texte associée à la sélection actuelle du dropdown.
+ * * `inputDropdownTextFontSize` *(number)* : LA taille de police du texte associée à la sélection actuelle du dropdown.
+ * * `errorStyle?` *(StyleProp<ViewStyle>)* : Le style associé à l'affichage de l'erreur généré par le dropdown.
+ * * `styleModal?` *(StyleProp<ViewStyle>)* : Style relatif à un Modal.
+ * * `styleOpenModal?` *(StyleProp<ViewStyle>)* : Style relatif au bouton permettant d'ouvrir le Modal.
+ * * `closeModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au texte permettant de fermer le modal.
+ * * `titleModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au texte associé au titre du modal.
+ * * `openModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au texte permettant d'ouvrir le modal.
  * 
  * ---
  * ---
@@ -160,19 +162,12 @@ const InputDropdown: React.FC<PropsInputDropdown> = ( props: PropsInputDropdown 
                 <ModalElement
                     title = { props.input.getTitle }
                     openModalTitle = { title }
-                    closeModalTextColor = { props.closeModalTextColor }
-                    closeModalTextFontSize = { props.closeModalTextFontSize }
-                    titleModalTextColor = { props.titleModalTextColor }
-                    titleModalTextFontSize = { props.titleModalTextFontSize }
-                    openModalTextColor = { props.openModalTextColor }
-                    openModalTextFontSize = { props.openModalTextFontSize }
-                    modalBackgroundColor = { props.modalBackgroundColor }
-                    styleOpenModal = { props.styleOpenModal }>
-                        <Text style = {{
-                            color: props.inputDropdownTextColor,
-                            fontSize: props.inputDropdownTextFontSize,
-                            textAlign: "center"
-                        }}>
+                    closeModalTextStyle = { props.closeModalTextStyle }
+                    titleModalTextStyle = { props.titleModalTextStyle }
+                    openModalTextStyle = { props.openModalTextStyle }
+                    styleOpenModal = { props.styleOpenModal }
+                    styleModal = { props.styleModal }>
+                        <Text style = { props.inputDropdownCurrentSelectionTextStyle }>
                             Sélection actuelle :  
                             <Text style = {{ fontWeight: "bold" }}> { props.input.getValue.getValue }</Text>
                         </Text>
@@ -183,10 +178,9 @@ const InputDropdown: React.FC<PropsInputDropdown> = ( props: PropsInputDropdown 
                             input = { props.input }
                             setTitle = { setTitle }
                             setError = { setError }
-                            selectedItemBackgroundColor = { props.selectedItemBackgroundColor }
-                            selectedItemBorderColor = { props.selectedItemBorderColor }
-                            itemTextColor = { props.itemTextColor }
-                            itemTextFontSize = { props.itemTextFontSize }
+                            selectedItemStyle = { props.selectedItemStyle }
+                            unselectedItemStyle = { props.unselectedItemStyle }
+                            itemTextStyle = { props.itemTextStyle }
                             listHeaderComponentStyleBackgroundColor = { props.listHeaderComponentStyleBackgroundColor }
                         />
                 </ModalElement>
@@ -204,3 +198,22 @@ const InputDropdown: React.FC<PropsInputDropdown> = ( props: PropsInputDropdown 
 }
 
 export default InputDropdown;
+
+
+ItemElement.defaultProps = {
+    selectedItemStyle: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        backgroundColor: "#9e867d",
+        borderColor: "#ea9576",
+        borderWidth: 0.5,
+        borderRadius: 7,
+        paddingHorizontal: 10
+    },
+    unselectedItemStyle: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "flex-start"
+    }
+}

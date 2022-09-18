@@ -1,4 +1,4 @@
-import { GestureResponderEvent, StyleProp, ViewStyle } from "react-native"
+import { GestureResponderEvent, StyleProp, TextStyle, ViewStyle } from "react-native"
 import { IMargin } from "../global/interface/margin"
 
 
@@ -14,8 +14,7 @@ import { IMargin } from "../global/interface/margin"
  * * `unselectedRadioColor` (string) : Couleur de l'icon associé au bouton radio lorsque celui - ci n'est pas sélectionné.
  * * `circleRadioSize?` (number) : Taille de l'icon associé au bouton radio.
  * * `marginRadioRight?` (number) : Marge droite de l'icon associé au bouton radio.
- * * `radioTextColor?` (string) : La couleur du texte associé à l'ensemble des bouton radio.
- * * `radioTextFontSize?` (number) : La taille de police du texte associé à l'ensemble des bouton radio.
+ * * `radioTextStyle?` (StyleProp<TextStyle>) : Style relatif au texte associé à un bouton radio.
  */
  export interface PropsRadioButtonElement {
     
@@ -37,10 +36,8 @@ import { IMargin } from "../global/interface/margin"
     circleRadioSize?: number,
     /** Marge droite de l'icon associé au bouton radio. */
     marginRadioRight?: number,
-    /** La couleur du texte associé à l'ensemble des bouton radio. */
-    radioTextColor?: string,
-    /** La taille de police du texte associé à l'ensemble des bouton radio. */
-    radioTextFontSize?: number
+    /** Style relatif au texte associé à un bouton radio. */
+    radioTextStyle?: StyleProp<TextStyle>
 }
 
 /**
@@ -53,8 +50,7 @@ import { IMargin } from "../global/interface/margin"
  * * `unselectedRadioColor?` (string) : Couleur de l'icon associé au bouton radio lorsque celui - ci n'est pas sélectionné.
  * * `circleRadioSize?` (number) : Taille de l'icon associé au bouton radio.
  * * `marginRadioRight?` (number) : Marge droite de l'icon associé au bouton radio.
- * * `radioTextColor?` (string) : La couleur du texte associé à l'ensemble des bouton radio.
- * * `radioTextFontSize?` (number) : La taille de police du texte associé à l'ensemble des bouton radio.
+ * * `radioTextStyle?` (StyleProp<TextStyle>) : Style relatif au texte associé à un bouton radio.
  * * `errorStyle?` (StyleProp<ViewStyle>) : Le style associé à l'affichage d'une erreur.
  * 
  * @param T Correspond à une instance du type d'input entré. Par exemple, un bouton radio classque ou encore un bouton radio dynamique, soit un bouton pouvant donner lieu à de nouveaux inputs.
@@ -76,10 +72,8 @@ import { IMargin } from "../global/interface/margin"
     circleRadioSize?: number,
     /** Marge droite de l'icon associé au bouton radio. */
     marginRadioRight?: number,
-    /** La couleur du texte associé à l'ensemble des bouton radio. */
-    radioTextColor?: string,
-    /** La taille de police du texte associé à l'ensemble des bouton radio. */
-    radioTextFontSize?: number
+    /** Style relatif au texte associé à un bouton radio. */
+    radioTextStyle?: StyleProp<TextStyle>
     /** Le style associé à l'affichage d'une erreur. */
     errorStyle?: StyleProp<ViewStyle>
 }

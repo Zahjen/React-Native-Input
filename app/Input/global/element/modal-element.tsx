@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, View, Text, Pressable, StyleProp, ViewStyle } from "react-native";
+import { Modal, View, Text, Pressable, StyleProp, ViewStyle, TextStyle } from "react-native";
 
 /**
  * Interface composée de :
@@ -8,13 +8,9 @@ import { Modal, View, Text, Pressable, StyleProp, ViewStyle } from "react-native
  * * `children?` *(any)* : Composansts pouvant se placer dans le Modal.
  * * `styleOpenModal?` *(StyleProp<ViewStyle>)* : Style relatif au bouton permettant d'ouvrir le Modal.
  * * `styleModal?` *(StyleProp<ViewStyle>)* : Style relatif à un Modal.
- * * `closeModalTextColor?` *(string)* : La couleur du texte permettant de fermer le modal.
- * * `closeModalTextFontSize?` *(number)* : La taille de police du texte permettant de fermer le modal.
- * * `titleModalTextColor?` *(string)* : La couleur du texte associé au titre du modal.
- * * `titleModalTextFontSize?` *(number)* :  La taille de police du texte associé au titre du modal.
- * * `modalBackgroundColor?` *(string)* : La couleur de fond du modal.
- * * `openModalTextColor?` *(string)* : La couleur du texte permettant d'ouvrir le modal.
- * * `openModalTextFontSize?` *(number)* : La taille de police du texte permettant d'ouvrir le modal.
+ * * `closeModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au texte permettant de fermer le modal.
+ * * `titleModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au texte associé au titre du modal.
+ * * `openModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au texte permettant d'ouvrir le modal.
  */
 export interface PropsModalElement {
     /** Titre que prendra le Modal, e.g. "Séléctionner un pays", ... */
@@ -27,20 +23,12 @@ export interface PropsModalElement {
     styleOpenModal?: StyleProp<ViewStyle>,
     /** Style relatif à un Modal. */
     styleModal?: StyleProp<ViewStyle>,
-    /** La couleur du texte permettant de fermer le modal. */
-    closeModalTextColor?: string,
-    /** La taille de police du texte permettant de fermer le modal. */
-    closeModalTextFontSize?: number,
-    /** La couleur du texte associé au titre du modal. */
-    titleModalTextColor?: string,
-    /** La taille de police du texte associé au titre du modal. */
-    titleModalTextFontSize?: number,
-    /** La couleur de fond du modal. */
-    modalBackgroundColor?: string,
-    /** La couleur du texte permettant d'ouvrir le modal. */
-    openModalTextColor?: string,
-    /** La taille de police du texte permettant d'ouvrir le modal. */
-    openModalTextFontSize?: number
+    /** Style relatif au texte permettant de fermer le modal. */
+    closeModalTextStyle?: StyleProp<TextStyle>,
+    /** Style relatif au texte associé au titre du modal. */
+    titleModalTextStyle?: StyleProp<TextStyle>,
+    /** Style relatif au texte permettant d'ouvrir le modal. */
+    openModalTextStyle?: StyleProp<TextStyle>
 }
 
 /**
@@ -55,13 +43,9 @@ export interface PropsModalElement {
  * * `children?` *(any)* : Composansts pouvant se placer dans le Modal.
  * * `styleOpenModal?` *(StyleProp<ViewStyle>)* : Style relatif au bouton permettant d'ouvrir le Modal.
  * * `styleModal?` *(StyleProp<ViewStyle>)* : Style relatif à un Modal.
- * * `closeModalTextColor?` *(string)* : La couleur du texte permettant de fermer le modal.
- * * `closeModalTextFontSize?` *(number)* : La taille de police du texte permettant de fermer le modal.
- * * `titleModalTextColor?` *(string)* : La couleur du texte associé au titre du modal.
- * * `titleModalTextFontSize?` *(number)* :  La taille de police du texte associé au titre du modal.
- * * `modalBackgroundColor?` *(string)* : La couleur de fond du modal.
- * * `openModalTextColor?` *(string)* : La couleur du texte permettant d'ouvrir le modal.
- * * `openModalTextFontSize?` *(number)* : La taille de police du texte permettant d'ouvrir le modal.
+ * * `closeModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au texte permettant de fermer le modal.
+ * * `titleModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au texte associé au titre du modal.
+ * * `openModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au texte permettant d'ouvrir le modal.
  * 
  * ---
  * ---
@@ -97,7 +81,7 @@ const ModalElement: React.FC<PropsModalElement> = (props: PropsModalElement): JS
                     style = {{ height: "40%", backgroundColor: "black", opacity: 0.2 }} 
                     onPress = { () => setVisible(!visible) }/>
 
-                <View style = { [props.styleModal, { backgroundColor: props.modalBackgroundColor }] }>  
+                <View style = { props.styleModal }>  
                     <View style = {{
                         flexDirection: "row",
                         alignItems: "baseline",
@@ -105,19 +89,12 @@ const ModalElement: React.FC<PropsModalElement> = (props: PropsModalElement): JS
                         paddingVertical: 30
                     }}>
                         <Pressable onPress = {(): void => setVisible(!visible)}>
-                            <Text style = {{
-                                color: props.closeModalTextColor,
-                                fontSize: props.closeModalTextFontSize
-                            }}>
+                            <Text style = { props.closeModalTextStyle }>
                                 Fermer
                             </Text>
                         </Pressable>
 
-                        <Text style = {{
-                            color: props.titleModalTextColor,
-                            fontSize: props.titleModalTextFontSize,
-                            marginLeft: 20
-                        }}>
+                        <Text style = { props.titleModalTextStyle }>
                             { props.title }
                         </Text>  
                     </View>                   
@@ -129,10 +106,7 @@ const ModalElement: React.FC<PropsModalElement> = (props: PropsModalElement): JS
             <Pressable 
                 onPress = {() => setVisible(true)}
                 style = { props.styleOpenModal }>
-                    <Text style = {{
-                        color: props.openModalTextColor,
-                        fontSize: props.openModalTextFontSize
-                    }}>
+                    <Text style = { props.openModalTextStyle }>
                         { props.openModalTitle }
                     </Text>
             </Pressable>
