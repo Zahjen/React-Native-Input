@@ -106,7 +106,6 @@ const ItemElement: React.FC<PropsItemInputDropDown> = ( props: PropsItemInputDro
             ListHeaderComponent = { 
                 <SearchBarComponent
                     placeholder = "Recherche ..."
-                    //value = { value.getValue }
                     handleSearch = {(text: string) => searchBarController.handleSearch(text, props.input.getAnswers, setData, setValue, "_value")}
                     value = { value }
                 /> 
@@ -198,7 +197,6 @@ const InputDropdown: React.FC<PropsInputDropdown> = ( props: PropsInputDropdown 
 }
 
 export default InputDropdown;
-
 
 ItemElement.defaultProps = {
     selectedItemStyle: {
