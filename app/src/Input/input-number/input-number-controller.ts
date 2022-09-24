@@ -68,7 +68,8 @@ export class InputNumberController {
     private getInputNumberError(
         input: InputNumberComponent
     ) : string {
-        if (input.isRequiredAndEmpty()) return errorMessage.requiredField;
+        if (input.isEmptyAndNotRequired()) return '';
+        else if (input.isRequiredAndEmpty()) return errorMessage.requiredField;
         else if (input.isNotInteger()) return errorMessage.invalidInteger;
         else if (input.isNotNonNegativeInteger()) return errorMessage.invalidNonNegativeInteger;
         else if (input.isNotNegativeInteger()) return errorMessage.invalidNegativeInteger;

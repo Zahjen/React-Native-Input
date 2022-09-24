@@ -71,6 +71,8 @@ const ItemCountryElement: React.FC<PropsItemCountry> = ( props: PropsItemCountry
  * * `unselectedItemStyle?` *(StyleProp<ViewStyle>)* : Le style associé à un item non sélectionné.
  * * `itemTextStyle?` *(StyleProp<TextStyle>)* : Le style du texte associé à un item.
  * * `listHeaderComponentStyleBackgroundColor?` *(string)* : La couleur de fond associé au header de la flatlist.
+ * * `searchBarStyleText?` *(StyleProp<TextStyle>)* : Style relatif au texte de la saisie.
+ * * `searchBarStyleContainer?` *(StyleProp<ViewStyle>)* : Style relatif au container de l'input permettant la recherche.
  * 
  * ---
  * ---
@@ -107,6 +109,8 @@ const ItemCountryElement: React.FC<PropsItemCountry> = ( props: PropsItemCountry
                     placeholder = "e.g. Luxembourg"
                     value = { value }
                     handleSearch = {(text: string) => searchBarController.handleSearch(text, frenchCountries, setData, setValue, "name")}
+                    styleText = { props.searchBarStyleText }
+                    styleContainer = { props.searchBarStyleContainer }
                 /> 
             }
             ListHeaderComponentStyle = {{ backgroundColor: props.listHeaderComponentStyleBackgroundColor, paddingBottom: 15 }}
@@ -131,7 +135,7 @@ const ItemCountryElement: React.FC<PropsItemCountry> = ( props: PropsItemCountry
  * * `listHeaderComponentStyleBackgroundColor?` *(string)* : La couleur de fond associé au header de la flatlist.
  * * `inputDropdownCurrentSelectionTextStyle` *(StyleProp<TextStyle>)* : Le style du texte associée à la sélection actuelle du dropdown.
  * * `inputDropdownTextFontSize` *(number)* : LA taille de police du texte associée à la sélection actuelle du dropdown.
- * * `errorStyle?` *(StyleProp<ViewStyle>)* : Le style associé à l'affichage de l'erreur généré par le dropdown.
+ * * `errorStyle?` *(StyleProp<TextStyle>)* : Le style associé à l'affichage de l'erreur généré par le dropdown.
  * * `styleModal?` *(StyleProp<ViewStyle>)* : Style relatif à un Modal.
  * * `styleOpenModal?` *(StyleProp<ViewStyle>)* : Style relatif au bouton permettant d'ouvrir le Modal.
  * * `closeModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au texte permettant de fermer le modal.
@@ -139,6 +143,9 @@ const ItemCountryElement: React.FC<PropsItemCountry> = ( props: PropsItemCountry
  * * `openModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au texte permettant d'ouvrir le modal.
  * * `textInputPhoneStyle?` *(StyleProp<TextStyle>)* : Style relatif au container permettant la saisie du numéro de téléphone.
  * * `placeholderPhoneTextColor?` *(string)* : Couleur du texte du placeholder permettant de donner une indication sur le numéro de téléphone à saisir.
+ * * `searchBarStyleText?` *(StyleProp<TextStyle>)* : Style relatif au texte de la saisie.
+ * * `searchBarStyleContainer?` *(StyleProp<ViewStyle>)* : Style relatif au container de l'input permettant la recherche.
+ * * `labelStyle?` *(StyleProp<TextStyle>)* : Correspond au style associé au label d'un input.
  * 
  * ---
  * ---
@@ -152,7 +159,7 @@ const ItemCountryElement: React.FC<PropsItemCountry> = ( props: PropsItemCountry
         = InputPhoneController.getInstance();
 
     const [borderWidth, setBorderWidth]: [number, React.Dispatch<React.SetStateAction<number>>]
-        = React.useState(0.5);
+        = React.useState(2);
 
     const [error, setError]: [string, React.Dispatch<React.SetStateAction<string>>]
         = React.useState('');
@@ -162,6 +169,10 @@ const ItemCountryElement: React.FC<PropsItemCountry> = ( props: PropsItemCountry
 
     return (
         <View>
+            <Text style = { props.labelStyle }>
+                { props.input.getLabel }
+            </Text>
+            
             <View style = {{
                 flexDirection: "row",
                 alignItems: "center",
@@ -185,20 +196,24 @@ const ItemCountryElement: React.FC<PropsItemCountry> = ( props: PropsItemCountry
                             input = { props.input }
                             setTitle = { setTitle }
                             setError = { setError }
+                            itemTextStyle = { props.itemTextStyle }
+                            listHeaderComponentStyleBackgroundColor = { props.listHeaderComponentStyleBackgroundColor }
+                            searchBarStyleText = { props.searchBarStyleText }
+                            searchBarStyleContainer = { props.searchBarStyleContainer }
                         />
                 </ModalElement>
 
-                <Spacer width = { 30 }/>
+                <Spacer width = { 15 }/>
                     
                 <TextInput
-                    style = { [props.textInputPhoneStyle, {borderBottomWidth: borderWidth}] }
+                    style = { [props.textInputPhoneStyle, {borderWidth: borderWidth}] }
                     onChangeText = { (value: string) => inputPhoneController.onTextChange(value, props, setError) }
                     placeholderTextColor = { props.placeholderPhoneTextColor }
                     placeholder = { props.input.getPlaceholder }
                     // Permet de grossir la bordure du bas de l'input lorsqu'il y a focus sur celui - ci.
-                    onFocus = { () => setBorderWidth(1.5) }
+                    onFocus = { () => setBorderWidth(3) }
                     // Lorsque le focus est levé, on retourne à la largeur de bordure original.
-                    onBlur = { () => setBorderWidth(0.5) } 
+                    onBlur = { () => setBorderWidth(2) } 
                     keyboardType = { props.input.getKeyboardType }
                     returnKeyType = "done"
                 />

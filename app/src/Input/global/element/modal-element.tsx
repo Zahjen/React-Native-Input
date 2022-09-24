@@ -11,6 +11,7 @@ import { Modal, View, Text, Pressable, StyleProp, ViewStyle, TextStyle } from "r
  * * `closeModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au texte permettant de fermer le modal.
  * * `titleModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au texte associé au titre du modal.
  * * `openModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au texte permettant d'ouvrir le modal.
+ * * `modalContainer?` *(StyleProp<ViewStyle>)* : Style relatif au contenant d'un modal.
  */
 export interface PropsModalElement {
     /** Titre que prendra le Modal, e.g. "Séléctionner un pays", ... */
@@ -28,7 +29,9 @@ export interface PropsModalElement {
     /** Style relatif au texte associé au titre du modal. */
     titleModalTextStyle?: StyleProp<TextStyle>,
     /** Style relatif au texte permettant d'ouvrir le modal. */
-    openModalTextStyle?: StyleProp<TextStyle>
+    openModalTextStyle?: StyleProp<TextStyle>,
+    /** Style relatif au contenant d'un modal. */
+    modalContainer?: StyleProp<ViewStyle>
 }
 
 /**
@@ -54,7 +57,7 @@ export interface PropsModalElement {
  * ```
  * ModalElement.defaultProps = {
  *      styleModal: {
- *          height: "60%",
+ *          height: "70%",
  *          marginTop: 'auto',
  *          borderTopLeftRadius: 30,
  *          borderTopRightRadius: 30,
@@ -71,14 +74,14 @@ const ModalElement: React.FC<PropsModalElement> = (props: PropsModalElement): JS
     const [visible, setVisible]: [boolean, React.Dispatch<React.SetStateAction<boolean>>] = React.useState(false)
 
     return (
-        <View>
+        <View style = { props.modalContainer }>
             <Modal    
                 animationType = { "slide" }  
                 transparent = { true }  
                 visible = { visible }> 
 
                 <Pressable 
-                    style = {{ height: "40%", backgroundColor: "black", opacity: 0.2 }} 
+                    style = {{ height: "100%", backgroundColor: "black", opacity: 0.5 }} 
                     onPress = { () => setVisible(!visible) }/>
 
                 <View style = { props.styleModal }>  
@@ -86,7 +89,7 @@ const ModalElement: React.FC<PropsModalElement> = (props: PropsModalElement): JS
                         flexDirection: "row",
                         alignItems: "baseline",
                         justifyContent: "flex-start",
-                        paddingVertical: 30
+                        paddingBottom: 30,
                     }}>
                         <Pressable onPress = {(): void => setVisible(!visible)}>
                             <Text style = { props.closeModalTextStyle }>
@@ -117,7 +120,7 @@ const ModalElement: React.FC<PropsModalElement> = (props: PropsModalElement): JS
 /** Les paramètres par défaut que prendra le composant */
 ModalElement.defaultProps = {
     styleModal: {
-        height: "60%",
+        height: "70%",
         marginTop: 'auto',
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,

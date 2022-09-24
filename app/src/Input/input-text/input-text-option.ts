@@ -1,4 +1,4 @@
-import { KeyboardType } from "react-native";
+import { KeyboardTypeOptions } from "react-native";
 import { IInputBaseComponentOption } from "../global/interface/input-base";
 
 
@@ -11,13 +11,13 @@ import { IInputBaseComponentOption } from "../global/interface/input-base";
  * * `placeholder?` *(string)* : Correspond à la phrase d'aide pour la saisie.
  * * `error?` *(string)* : Correspond à l'erreur qui aura été catch si une valeur incorrecte est saisie par l'utilisateur.
  * * `isRequired?` *(boolean)* : Correspond au fait qu'un input puisse ou non être obligatoire à saisir.
- * * `keyboardType?` *(KeyboardType)* : Permet de déterminer le clavier à afficher, e.g. un clavier fait pour saisir des nombres, un autre pour saisir une addresse mail, etc.
+ * * `keyboardType?` *(KeyboardTypeOptions)* : Permet de déterminer le clavier à afficher, e.g. un clavier fait pour saisir des nombres, un autre pour saisir une addresse mail, etc.
  */
 export interface IInputTextComponentOption extends IInputBaseComponentOption<string> {
 
     /** Correspond à la phrase d'aide pour la saisie. */
     placeholder?: string,
     /** Permet de déterminer le clavier à afficher, e.g. un clavier fait pour saisir des nombres, un autre pour saisir une addresse mail, etc. */
-    keyboardType?: KeyboardType
+    keyboardType?: KeyboardTypeOptions
 
 }

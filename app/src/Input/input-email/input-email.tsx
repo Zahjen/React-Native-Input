@@ -30,7 +30,7 @@ const InputEmail: React.FC<PropsInputEmail> = (props: PropsInputEmail): JSX.Elem
         = InputEmailController.getInstance();
 
     const [borderWidth, setBorderWidth]: [number, React.Dispatch<React.SetStateAction<number>>]
-        = React.useState(0.5)
+        = React.useState(2)
 
     const [error, setError]: [string, React.Dispatch<React.SetStateAction<string>>] 
         = React.useState('');
@@ -41,14 +41,14 @@ const InputEmail: React.FC<PropsInputEmail> = (props: PropsInputEmail): JSX.Elem
                 { props.input.getLabel }
             </Text>
             <TextInput
-                style = { [props.textInputStyle, {borderBottomWidth: borderWidth}] }
+                style = { [props.textInputStyle, {borderWidth: borderWidth}] }
                 onChangeText = { (value: string) => inputEmailController.onInputTextChange(props, value, setError) }
                 placeholderTextColor = { props.placeholderTextColor }
                 placeholder = { props.input.getPlaceholder }
                 // Permet de grossir la bordure du bas de l'input lorsqu'il y a focus sur celui - ci.
-                onFocus = { () => setBorderWidth(1.5) }
+                onFocus = { () => setBorderWidth(3) }
                 // Lorsque le focus est levé, on retourne à la largeur de bordure original.
-                onBlur = { () => setBorderWidth(0.5) } 
+                onBlur = { () => setBorderWidth(2) } 
                 keyboardType = { props.input.getKeyboardType }
             />
 

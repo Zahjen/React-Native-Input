@@ -43,6 +43,7 @@ import { IMargin } from "../global/interface/margin"
 /**
  * Interface composée de :
  * * `input` *(T)* : Instance de la classe T permettant de stocker les informations relatives à cet input.
+ * * `labelStyle?` *(StyleProp<TextStyle>)* : Correspond au style associé au label d'un input.
  * * `styleContent?` *(StyleProp<ViewStyle>)* : Correspond au style que prendra l'ensemble des boutons radios, par exemple il pourront tous être aligné sur la gauche, centrés, etc. les uns par rapport aux autres.
  * * `styleContainer?` *(StyleProp<ViewStyle>)* : Correspond au style que prendra le contenant par rapport au composant parent s'il y a lieu d'être. Par exemple, il pourra être centré sur une page.
  * * `margin?` (IMargin) : Permet de déterminer les marges correspondantes aux alentours d'un unique bouton radio.
@@ -51,13 +52,15 @@ import { IMargin } from "../global/interface/margin"
  * * `circleRadioSize?` (number) : Taille de l'icon associé au bouton radio.
  * * `marginRadioRight?` (number) : Marge droite de l'icon associé au bouton radio.
  * * `radioTextStyle?` (StyleProp<TextStyle>) : Style relatif au texte associé à un bouton radio.
- * * `errorStyle?` (StyleProp<ViewStyle>) : Le style associé à l'affichage d'une erreur.
+ * * `errorStyle?` (StyleProp<TextStyle>) : Le style associé à l'affichage d'une erreur.
  * 
  * @param T Correspond à une instance du type d'input entré. Par exemple, un bouton radio classque ou encore un bouton radio dynamique, soit un bouton pouvant donner lieu à de nouveaux inputs.
  */
  export interface PropsInputRadioButton<T> {
     /** Instance de la classe T permettant de stocker les informations relatives à cet input. */
     input: T,
+    /** Correspond au style associé au label d'un input. */
+    labelStyle?: StyleProp<TextStyle>,
     /** Style que prendra l'ensemble des boutons radios, par exemple il pourront tous être aligné sur la gauche, centrés, etc. les uns par rapport aux autres. */
     styleContent?: StyleProp<ViewStyle>,
     /** Style que prendra le contenant par rapport au composant parent s'il y a lieu d'être. Par exemple, il pourra être centré sur une page. */
@@ -73,7 +76,7 @@ import { IMargin } from "../global/interface/margin"
     /** Marge droite de l'icon associé au bouton radio. */
     marginRadioRight?: number,
     /** Style relatif au texte associé à un bouton radio. */
-    radioTextStyle?: StyleProp<TextStyle>
+    radioTextStyle?: StyleProp<TextStyle>,
     /** Le style associé à l'affichage d'une erreur. */
-    errorStyle?: StyleProp<ViewStyle>
+    errorStyle?: StyleProp<TextStyle>
 }

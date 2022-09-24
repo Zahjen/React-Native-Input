@@ -97,6 +97,10 @@ const InputRadioButton: React.FC<PropsInputRadioButton<InputRadioButtonComponent
 
     return (
         <View style = { props.styleContainer }>
+            <Text style = { props.labelStyle }>
+                { props.input.getLabel }
+            </Text>
+
             <View style = { props.styleContent }>            
                 { props.input!.getAnswers.map((answer: Answer) => {
                     return (
@@ -151,7 +155,7 @@ InputRadioButton.defaultProps = {
     circleRadioSize: 20,
     marginRadioRight: 7,
     margin: {
-        bottom: 7
+        bottom: 15
     }
 }
 

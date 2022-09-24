@@ -1,17 +1,21 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { EInputType } from "../Input/global/enumeration/input-type";
-import { TypeInputRadio } from "../Input/global/type/input-type";
 import InputDateTime from "../Input/input-date-time/input-date-time";
 import { InputDateTimeComponent } from "../Input/input-date-time/input-date-time-component";
+import InputDropdown from "../Input/input-dropdown/input-dropdown";
+import { InputDropdownComponent } from "../Input/input-dropdown/input-dropdown-component";
 import InputEmail from "../Input/input-email/input-email";
 import { InputEmailComponent } from "../Input/input-email/input-email-component";
 import InputNumber from "../Input/input-number/input-number";
 import { InputNumberComponent } from "../Input/input-number/input-number-component";
+import InputPhone from "../Input/input-phone/input-phone";
+import { InputPhoneComponent } from "../Input/input-phone/input-phone-component";
 import InputRadioButton from "../Input/input-radio-button/input-radio-button";
 import { InputRadioButtonComponent } from "../Input/input-radio-button/input-radio-button-component";
 import InputText from "../Input/input-text/input-text";
 import { InputTextComponent } from "../Input/input-text/input-text-component";
+import { dateTimeComponent, dropdownComponent, errorComponent, phoneComponent, radioButtonComponent, radioStyleContent, textTypeComponent } from "../example/variables/input-style";
 
 const ERROR = "Oups... Un problème est survenu lors de la génération du Composant! Vérifiez l'input entré!";
 
@@ -57,12 +61,8 @@ export class InputGenerator {
      * @returns Message d'erreur
      */
     public renderErrorComponent(error: string = ERROR): JSX.Element {
-        return <View style = {{ 
-            backgroundColor: "#ea9576",
-            padding: 10,
-            borderRadius: 7
-        }}>
-            <Text style = {{ color: "#ffffff" }}>
+        return <View style = { errorComponent.container }>
+            <Text style = { errorComponent.text }>
                 { error }
             </Text>
         </View>
@@ -101,33 +101,15 @@ export class InputGenerator {
                 date = { input }
                 mode = { mode }
                 icon = { icon }
-                datePickerContainerStyle = {{}}
-                labelTextStyle = {{ 
-                    color: "#ea9576", 
-                    fontSize: 16 
-                }}
-                spaceLabelPicker = { 15 }
-                openDatePickerPressableStyle = {{ 
-                    borderWidth: 0.5,
-                    borderColor: "#f0f0f0",
-                    borderRadius: 7,
-                    paddingVertical: 10,
-                    paddingHorizontal: 15,
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                }}
-                datePickerTextStyle = {{
-                    color: "#f0f0f0",
-                    fontSize: 16 
-                }}
-                iconPressableStyle = {{
-                    color: "#f0f0f0",
-                    fontSize: 18 
-                }}
-                confirmTextButtonColor = "#98bc62"
-                confirmButtonBackgroundColor = "#303f56"
-                cancelButtonBackgroundColor = "#303f56"
-                cancelTextButtonColor = "#b44649"
+                labelTextStyle = { dateTimeComponent.labelTextStyle }
+                spaceLabelPicker = { dateTimeComponent.spaceLabelPicker }
+                openDatePickerPressableStyle = { dateTimeComponent.openDatePickerPressableStyle }
+                datePickerTextStyle = { dateTimeComponent.datePickerTextStyle }
+                iconPressableStyle = { dateTimeComponent.iconPressableStyle }
+                confirmTextButtonColor = { dateTimeComponent.confirmButtonBackgroundColor }
+                confirmButtonBackgroundColor = { dateTimeComponent.confirmButtonBackgroundColor }
+                cancelButtonBackgroundColor = { dateTimeComponent.cancelButtonBackgroundColor }
+                cancelTextButtonColor = { dateTimeComponent.cancelTextButtonColor }
             />
         )
     }
@@ -141,22 +123,10 @@ export class InputGenerator {
      public renderTextInput(input: InputTextComponent): JSX.Element {
         return <InputText 
             input = { input }  
-            labelStyle = {{ 
-                color: "#ea9576", 
-                fontSize: 16,
-            }}
-            textInputStyle = {{
-                color: "#f0f0f0", 
-                fontSize: 16,
-                marginVertical: 15,
-                borderColor: "#f0f0f0",
-                paddingBottom: 5
-            }}
-            placeholderTextColor = "#b4b4b4"
-            errorStyle = {{
-                color: "#b44649", 
-                fontSize: 16,
-            }}      
+            labelStyle = { textTypeComponent.labelStyle }
+            textInputStyle = { textTypeComponent.textInputStyle }
+            placeholderTextColor = { textTypeComponent.placeholderTextColor }
+            errorStyle = { textTypeComponent.errorStyle }      
         />
     }
 
@@ -169,22 +139,10 @@ export class InputGenerator {
      public renderEmailInput(input: InputEmailComponent): JSX.Element {
         return <InputEmail 
             input = { input }  
-            labelStyle = {{ 
-                color: "#ea9576", 
-                fontSize: 16,
-            }}
-            textInputStyle = {{
-                color: "#f0f0f0", 
-                fontSize: 16,
-                marginVertical: 15,
-                borderColor: "#f0f0f0",
-                paddingBottom: 5
-            }}
-            placeholderTextColor = "#b4b4b4"
-            errorStyle = {{
-                color: "#b44649", 
-                fontSize: 16,
-            }}      
+            labelStyle = { textTypeComponent.labelStyle }
+            textInputStyle = { textTypeComponent.textInputStyle }
+            placeholderTextColor = { textTypeComponent.placeholderTextColor }
+            errorStyle = { textTypeComponent.errorStyle }  
         />
     }
 
@@ -192,30 +150,88 @@ export class InputGenerator {
      * Méthode permettant d'afficher un input de type nombre.
      * 
      * @param input Instance de classe InputNumberComponent.
-     * @returns Affiche un input de type email.
+     * @returns Affiche un input de type nombre.
      */
      public renderNumberInput(input: InputNumberComponent): JSX.Element {
         return <InputNumber 
             input = { input }  
-            labelStyle = {{ 
-                color: "#ea9576", 
-                fontSize: 16,
-            }}
-            textInputStyle = {{
-                color: "#f0f0f0", 
-                fontSize: 16,
-                marginVertical: 15,
-                borderColor: "#f0f0f0",
-                paddingBottom: 5
-            }}
-            placeholderTextColor = "#b4b4b4"
-            errorStyle = {{
-                color: "#b44649", 
-                fontSize: 16,
-            }}      
+            labelStyle = { textTypeComponent.labelStyle }
+            textInputStyle = { textTypeComponent.textInputStyle }
+            placeholderTextColor = { textTypeComponent.placeholderTextColor }
+            errorStyle = { textTypeComponent.errorStyle }  
         />
     }
 
+    /**
+     * Méthode permettant d'afficher un input de type dropdown.
+     * 
+     * @param input Instance de classe InputDropdownComponent.
+     * @returns Affiche un input de type dropdown.
+     */
+     public renderDropdownInput(input: InputDropdownComponent): JSX.Element {
+        return <InputDropdown 
+            input = { input } 
+            labelStyle = { dropdownComponent.labelStyle }
+            itemTextStyle = { dropdownComponent.itemTextStyle }
+            listHeaderComponentStyleBackgroundColor = { dropdownComponent.listHeaderComponentStyleBackgroundColor }
+            inputDropdownCurrentSelectionTextStyle = { dropdownComponent.inputDropdownCurrentSelectionTextStyle }
+            errorStyle = { dropdownComponent.errorStyle }
+            modalContainer = { dropdownComponent.modalContainer }
+            styleModal = { dropdownComponent.styleModal }
+            closeModalTextStyle = { dropdownComponent.closeModalTextStyle }
+            titleModalTextStyle = { dropdownComponent.titleModalTextStyle }
+            searchBarStyleContainer = { dropdownComponent.searchBarStyleContainer }
+            searchBarStyleText = { dropdownComponent.searchBarStyleText }
+            styleOpenModal = { dropdownComponent.styleOpenModal }
+            openModalTextStyle = { dropdownComponent.openModalTextStyle }
+        />
+    }
+
+    /**
+     * Méthode permettant d'afficher un input de type dropdown.
+     * 
+     * @param input Instance de classe InputRadioButtonComponent.
+     * @returns Affiche un input de type dropdown.
+     */
+     public renderRadioButtonInput(input: InputRadioButtonComponent): JSX.Element {
+        const radioButtonStyle = radioButtonComponent(input);
+
+        return <InputRadioButton 
+            input = { input } 
+            labelStyle = { radioButtonStyle.labelStyle }
+            selectedRadioColor = { radioButtonStyle.selectedRadioColor }  
+            unselectedRadioColor = { radioButtonStyle.unselectedRadioColor }
+            radioTextStyle = { radioButtonStyle.radioTextStyle }
+            margin = { radioButtonStyle.margin }
+            styleContent = { radioStyleContent(input.getType) }
+            errorStyle = { radioButtonStyle.errorStyle }
+        />
+    }
     
+    /**
+     * Méthode permettant d'afficher un input de type phone.
+     * 
+     * @param input Instance de classe InputPhoneComponent.
+     * @returns Affiche un input de type dropdown.
+     */
+     public renderPhoneInput(input: InputPhoneComponent): JSX.Element {
+        return <InputPhone 
+            input = { input } 
+            labelStyle = { phoneComponent.labelStyle }
+            itemTextStyle = { phoneComponent.itemTextStyle }
+            listHeaderComponentStyleBackgroundColor = { phoneComponent.listHeaderComponentStyleBackgroundColor }
+            inputDropdownCurrentSelectionTextStyle = { phoneComponent.inputDropdownCurrentSelectionTextStyle }
+            errorStyle = { phoneComponent.errorStyle }
+            styleModal = { phoneComponent.styleModal }
+            closeModalTextStyle = { phoneComponent.closeModalTextStyle }
+            titleModalTextStyle = { phoneComponent.titleModalTextStyle }
+            searchBarStyleContainer = { phoneComponent.searchBarStyleContainer }
+            searchBarStyleText = { phoneComponent.searchBarStyleText }
+            styleOpenModal = { phoneComponent.styleOpenModal }
+            openModalTextStyle = { phoneComponent.openModalTextStyle }
+            textInputPhoneStyle = { phoneComponent.textInputPhoneStyle }
+            placeholderPhoneTextColor = { phoneComponent.placeholderPhoneTextColor }
+        />
+    }
 
 }

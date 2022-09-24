@@ -1,4 +1,4 @@
-import { KeyboardType } from "react-native";
+import { KeyboardTypeOptions } from "react-native";
 import { InputBaseComponent } from "../global/input/input-base-component";
 import { IInputTextComponentOption } from "./input-text-option";
 
@@ -6,7 +6,7 @@ import { IInputTextComponentOption } from "./input-text-option";
  * Classe relative à un input de type texte.
  * 
  * @property {`string`} _placeholder : Correspond à la phrase d'aide, notamment utile pour les input de type text par exemple.
- * @property {`KeyboardType`} _keyboardType : Permet de déterminer le clavier à afficher, e.g. un clavier fait pour saisir des nombre, un autre pour saisir une addresse mail, etc.
+ * @property {`KeyboardTypeOptions`} _keyboardType : Permet de déterminer le clavier à afficher, e.g. un clavier fait pour saisir des nombre, un autre pour saisir une addresse mail, etc.
  * 
  * @extends {InputBaseComponent<string>} Classe relative à un input pouvant être accompagné d'une erreur et pouvant être requis.
  */
@@ -19,7 +19,7 @@ export class InputTextComponent extends InputBaseComponent<string> {
     /** Correspond à la phrase d'aide, notamment utile pour les input de type text par exemple. */
     private _placeholder!: string;
     /** Permet de déterminer le clavier à afficher, e.g. un clavier fait pour saisir des nombre, un autre pour saisir une addresse mail, etc. */
-    private _keyboardType!: KeyboardType;
+    private _keyboardType!: KeyboardTypeOptions;
 
     // --------------------------
     // Constructeur
@@ -42,7 +42,7 @@ export class InputTextComponent extends InputBaseComponent<string> {
     { return this._placeholder; }
 
     /** Méthode permettant de récupérer le type de clavier associé à un input. */
-    public get getKeyboardType() : KeyboardType 
+    public get getKeyboardType() : KeyboardTypeOptions 
     { return this._keyboardType; }
 
     // --------------------------
@@ -57,7 +57,7 @@ export class InputTextComponent extends InputBaseComponent<string> {
     }
 
     /** Méthode permettant de poser le type de clavier associé à un input. */
-    public set keyboardType(keyboardType: KeyboardType) {
+    public set keyboardType(keyboardType: KeyboardTypeOptions) {
         this._keyboardType = (keyboardType === undefined || keyboardType === null)
             ? "default" 
             : keyboardType;
@@ -87,6 +87,15 @@ export class InputTextComponent extends InputBaseComponent<string> {
      */
     public isRequiredAndEmpty() : boolean {
         return this._isRequired && this._value === "";
+    }
+
+    /**
+     * Méthode permettant de déterminer si le champ est vide et qu'il n'est pas requis.
+     * 
+     * @returns Un booléen déterminant si le champ est vide et qu'il n'est pas requis.
+     */
+     public isEmptyAndNotRequired() : boolean {
+        return !(this._isRequired) && this._value === "";
     }
    
 }

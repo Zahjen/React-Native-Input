@@ -1,6 +1,5 @@
 import React from "react";
 import { FlatList, Pressable, StyleProp, Text, View, ViewStyle } from "react-native";
-import Line from "../global/element/line";
 import ModalElement from "../global/element/modal-element";
 import Spacer from "../global/element/spacer";
 import { Answer } from "../global/input/answer";
@@ -72,6 +71,8 @@ const ItemElement: React.FC<PropsItemInputDropDown> = ( props: PropsItemInputDro
  * * `unselectedItemStyle?` *(StyleProp<ViewStyle>)* : Le style associé à un item non sélectionné.
  * * `itemTextStyle?` *(StyleProp<TextStyle>)* : Le style du texte associé à un item.
  * * `listHeaderComponentStyleBackgroundColor?` *(string)* : La couleur de fond associé au header de la flatlist.
+ * * `searchBarStyleText?` *(StyleProp<TextStyle>)* : Style relatif au texte de la saisie.
+ * * `searchBarStyleContainer?` *(StyleProp<ViewStyle>)* : Style relatif au container de l'input permettant la recherche.
  * 
  * ---
  * ---
@@ -108,6 +109,8 @@ const ItemElement: React.FC<PropsItemInputDropDown> = ( props: PropsItemInputDro
                     placeholder = "Recherche ..."
                     handleSearch = {(text: string) => searchBarController.handleSearch(text, props.input.getAnswers, setData, setValue, "_value")}
                     value = { value }
+                    styleText = { props.searchBarStyleText }
+                    styleContainer = { props.searchBarStyleContainer }
                 /> 
             }
             ListHeaderComponentStyle = {{ backgroundColor: props.listHeaderComponentStyleBackgroundColor, paddingBottom: 15 }}
@@ -130,12 +133,16 @@ const ItemElement: React.FC<PropsItemInputDropDown> = ( props: PropsItemInputDro
  * * `listHeaderComponentStyleBackgroundColor?` *(string)* : La couleur de fond associé au header de la flatlist.
  * * `inputDropdownCurrentSelectionTextStyle` *(StyleProp<TextStyle>)* : Le style du texte associée à la sélection actuelle du dropdown.
  * * `inputDropdownTextFontSize` *(number)* : LA taille de police du texte associée à la sélection actuelle du dropdown.
- * * `errorStyle?` *(StyleProp<ViewStyle>)* : Le style associé à l'affichage de l'erreur généré par le dropdown.
+ * * `errorStyle?` *(StyleProp<TextStyle>)* : Le style associé à l'affichage de l'erreur généré par le dropdown.
  * * `styleModal?` *(StyleProp<ViewStyle>)* : Style relatif à un Modal.
  * * `styleOpenModal?` *(StyleProp<ViewStyle>)* : Style relatif au bouton permettant d'ouvrir le Modal.
  * * `closeModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au texte permettant de fermer le modal.
  * * `titleModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au texte associé au titre du modal.
- * * `openModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au texte permettant d'ouvrir le modal.
+ * * `openModalTextStyle?` *(StyleProp<TextStyle>)* : Style relatif au contenant d'un modal.
+ * * `searchBarStyleText?` *(StyleProp<TextStyle>)* : Style relatif au texte de la saisie.
+ * * `searchBarStyleContainer?` *(StyleProp<ViewStyle>)* : Style relatif au container de l'input permettant la recherche.
+ * * `labelStyle?` *(StyleProp<TextStyle>)* : Correspond au style associé au label d'un input.
+ * * `modalContainer?` *(StyleProp<ViewStyle>)* : Correspond au style associé au label d'un input.
  * 
  * ---
  * ---
@@ -153,6 +160,10 @@ const InputDropdown: React.FC<PropsInputDropdown> = ( props: PropsInputDropdown 
 
     return (
         <View>
+            <Text style = { props.labelStyle }>
+                { props.input.getLabel }
+            </Text>
+            
             <View style = {{
                 flexDirection: "row",
                 alignItems: "center",
@@ -165,7 +176,8 @@ const InputDropdown: React.FC<PropsInputDropdown> = ( props: PropsInputDropdown 
                     titleModalTextStyle = { props.titleModalTextStyle }
                     openModalTextStyle = { props.openModalTextStyle }
                     styleOpenModal = { props.styleOpenModal }
-                    styleModal = { props.styleModal }>
+                    styleModal = { props.styleModal }
+                    modalContainer = { props.modalContainer }>
                         <Text style = { props.inputDropdownCurrentSelectionTextStyle }>
                             Sélection actuelle :  
                             <Text style = {{ fontWeight: "bold" }}> { props.input.getValue.getValue }</Text>
@@ -181,11 +193,11 @@ const InputDropdown: React.FC<PropsInputDropdown> = ( props: PropsInputDropdown 
                             unselectedItemStyle = { props.unselectedItemStyle }
                             itemTextStyle = { props.itemTextStyle }
                             listHeaderComponentStyleBackgroundColor = { props.listHeaderComponentStyleBackgroundColor }
+                            searchBarStyleText = { props.searchBarStyleText }
+                            searchBarStyleContainer = { props.searchBarStyleContainer }
                         />
                 </ModalElement>
             </View>
-            <Line margin = {{top: 7, bottom: 7}}/>
-            <Spacer height = { 10 }/>
 
             <InputErrorMessage
                 errorMessage = { error }

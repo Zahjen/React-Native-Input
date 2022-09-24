@@ -1,8 +1,13 @@
+import { Platform } from "react-native";
 import { EInputType } from "../Input/global/enumeration/input-type";
 import { ENumericalDataType } from "../Input/global/enumeration/numerical-data-type";
+import { Answer } from "../Input/global/input/answer";
 import { InputDateTimeComponent } from "../Input/input-date-time/input-date-time-component";
+import { InputDropdownComponent } from "../Input/input-dropdown/input-dropdown-component";
 import { InputEmailComponent } from "../Input/input-email/input-email-component";
 import { InputNumberComponent } from "../Input/input-number/input-number-component";
+import { InputPhoneComponent } from "../Input/input-phone/input-phone-component";
+import { InputRadioButtonComponent } from "../Input/input-radio-button/input-radio-button-component";
 import { InputTextComponent } from "../Input/input-text/input-text-component";
 
 
@@ -124,7 +129,7 @@ export class Example {
                 numericalDataType: ENumericalDataType.NON_NEGATIVE_DECIMAL,
                 isRequired: false,
                 placeholder: "Exemple: 42.2",
-                keyboardType: "numeric"
+                keyboardType: "decimal-pad"
             }),
 
             new InputNumberComponent({
@@ -134,9 +139,155 @@ export class Example {
                 numericalDataType: ENumericalDataType.NEGATIVE_DECIMAL,
                 isRequired: false,
                 placeholder: "Exemple: - 42.2",
-                keyboardType: "numeric"
+                keyboardType: Platform.OS === "ios" ? "numbers-and-punctuation" : "numeric"
+            }),
+
+            new InputNumberComponent({
+                key: "input_number_decimal",
+                label: "Saisir un nombre décimal, qu'il soit positif ou négatif",
+                type: EInputType.NUMBER,
+                numericalDataType: ENumericalDataType.DECIMAL,
+                isRequired: false,
+                placeholder: "Exemple: - 42.2, 56, ...",
+                keyboardType: Platform.OS === "ios" ? "numbers-and-punctuation" : "numeric"
+            }),
+
+            new InputNumberComponent({
+                key: "input_number_integer",
+                label: "Saisir un nombre entier, qu'il soit positif ou négatif",
+                type: EInputType.NUMBER,
+                numericalDataType: ENumericalDataType.INTEGER,
+                isRequired: false,
+                placeholder: "Exemple: - 42, 56, ...",
+                keyboardType: Platform.OS === "ios" ? "numbers-and-punctuation" : "numeric"
+            }),
+
+            new InputNumberComponent({
+                key: "input_number_negative_integer",
+                label: "Saisir un nombre entier, qu'il soit positif ou négatif",
+                type: EInputType.NUMBER,
+                numericalDataType: ENumericalDataType.NEGATIVE_INTEGER,
+                isRequired: false,
+                placeholder: "Exemple: - 42",
+                keyboardType: Platform.OS === "ios" ? "numbers-and-punctuation" : "numeric"
+            }),
+
+            new InputNumberComponent({
+                key: "input_number_non_negative_integer",
+                label: "Saisir un nombre entier, qu'il soit positif ou négatif",
+                type: EInputType.NUMBER,
+                numericalDataType: ENumericalDataType.NON_NEGATIVE_INTEGER,
+                isRequired: false,
+                placeholder: "Exemple: 42",
+                keyboardType: "number-pad"
             }),
         ]  
     }
+
+    /**
+     * Méthode permettant de récupérer des inputs permettant la saisie via un dropdown.
+     * 
+     * @returns InputDropdownComponent.
+     */
+    public getDropdownData() : InputDropdownComponent {
+        return new InputDropdownComponent({
+            key: "input_dropdown",
+            label: "Sélectionner une option",
+            type: EInputType.DROPDOWN,
+            title: 'Sélectionner une option',
+            isRequired: true,
+            value: new Answer({
+                id: 0,
+                key: "Sélectionner une option",
+                value: "Sélectionner une option"
+            }),
+            answers: [
+                new Answer({
+                    id: 1,
+                    key: "option-1",
+                    value: "Option 1"
+                }),
+                new Answer({
+                    id: 2,
+                    key: "option-2",
+                    value: "Option 2"
+                }),
+                new Answer({
+                    id: 3,
+                    key: "option-3",
+                    value: "Option 3"
+                })
+            ]            
+        })
+    }
+
+    /**
+     * Méthode permettant de récupérer des inputs permettant la saisie via un bouton radio.
+     * 
+     * @returns InputRadioButtonComponent[].
+     */
+     public getRadioButtonData() : InputRadioButtonComponent[] {
+        return [
+            new InputRadioButtonComponent({
+                key: "input_radio_button_column",
+                label: "Sélectionner une option via un bouton radio en colonne",
+                type: EInputType.RADIO_COLUMN,
+                isRequired: true,
+                answers: [
+                    new Answer({
+                        id: 1,
+                        key: "option-1",
+                        value: "Option 1"
+                    }),
+                    new Answer({
+                        id: 2,
+                        key: "option-2",
+                        value: "Option 2"
+                    }),
+                    new Answer({
+                        id: 3,
+                        key: "option-3",
+                        value: "Option 3"
+                    })
+                ]            
+            }),
+
+            new InputRadioButtonComponent({
+                key: "input_radio_button_row",
+                label: "Sélectionner une option via un bouton radio en ligne",
+                type: EInputType.RADIO_ROW,
+                isRequired: true,
+                answers: [
+                    new Answer({
+                        id: 1,
+                        key: "option-1",
+                        value: "Option 1"
+                    }),
+                    new Answer({
+                        id: 2,
+                        key: "option-2",
+                        value: "Option 2"
+                    })
+                ]            
+            })
+        ]
+        
+    }  
+
+    /**
+     * Méthode permettant de récupérer des inputs permettant la saisie d'un numéro de téléphone.
+     * 
+     * @returns InputPhoneComponent.
+     */
+    public getPhoneData() : InputPhoneComponent {
+        return new InputPhoneComponent({
+            key: "contact_tel",
+            label: "Numéro de téléphone",
+            type: EInputType.TEL,
+            placeholder: "Exemple: 06 06 06 06 06",
+            isRequired: false,
+            keyboardType: "phone-pad"
+        })     
+    }  
 
 }

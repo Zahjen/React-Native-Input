@@ -51,8 +51,11 @@ export class InputEmailController {
         // On stocke la saisie de l'utilisateur dans notre objet.
         props.input.value = value;
 
+        // Si le champ n'est pas requis, et qu'il est vide, on initalise l'erreur comme étant vide.
+        if (props.input.isEmptyAndNotRequired()) props.input.error = '';
+
         // Si le champ est requis et que la saisie est vide, on récupère l'erreur correspondante.
-        if (props.input.isRequiredAndEmpty()) props.input.error = errorMessage.requiredField;
+        else if (props.input.isRequiredAndEmpty()) props.input.error = errorMessage.requiredField;
 
         // Si le champ est une addresse mail, et que celui - ci est incorrecte, on récupère l'erreur correspondante.
         else if (props.input.isNotEmailValid()) props.input.error = errorMessage.invalidEmail;

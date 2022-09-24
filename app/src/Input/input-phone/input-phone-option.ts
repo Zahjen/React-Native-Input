@@ -10,7 +10,7 @@ import { CountryCode } from "libphonenumber-js";
  * * `placeholder?` *(string)* : Correspond à la phrase d'aide, notamment utile pour les input de type text par exemple.
  * * `error?` *(string)* : Correspond à l'erreur qui aura été catch si une valeur incorrecte est saisie par l'utilisateur.
  * * `isRequired?` *(boolean)* : Correspond au fait qu'un input puisse ou non être obligatoire à saisir.
- * * `keyboardType?` *(KeyboardType)* : Permet de déterminer le clavier à afficher, e.g. un clavier fait pour saisir des nombre, un autre pour saisir une addresse mail, etc.
+ * * `keyboardType?` *(KeyboardTypeOptions)* : Permet de déterminer le clavier à afficher, e.g. un clavier fait pour saisir des nombre, un autre pour saisir une addresse mail, etc.
  * * `countryCode?` *(string)* : Correspond au code d'un pays en norme `ISO 3166-1 alpha-2`.
  */
 export interface IInputPhoneComponentOption extends IInputTextComponentOption {

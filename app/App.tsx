@@ -1,9 +1,29 @@
 import React from 'react';
-import { StyleSheet, View, Text, SafeAreaView, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { Example } from './src/example/example-data';
-import Line from './src/Input/global/element/line';
+import { color } from './src/example/variables/color';
 import Spacer from './src/Input/global/element/spacer';
 import { InputGenerator } from './src/service/input-generator';
+
+interface CardProps {
+  title: string,
+  children: any
+}
+
+const Card: React.FC<CardProps> = (props: CardProps): JSX.Element => {
+  return <View>
+    <Text style = { styles.title }>
+      { props.title }
+    </Text>
+    <Spacer height = { spacer.input }/>
+
+    <View style = { styles.card }>
+      { props.children }
+    </View>
+
+    <Spacer height = { spacer.card }/>
+  </View>
+}
 
 const App = () => {
 
@@ -11,84 +31,72 @@ const App = () => {
   let textData = Example.getInstance().getTextData();
   let emailData = Example.getInstance().getEmailData();
   let numberData = Example.getInstance().getNumberData();
+  let dropdownData = Example.getInstance().getDropdownData();
+  let radioButtonData = Example.getInstance().getRadioButtonData();
+  let phoneData = Example.getInstance().getPhoneData();
 
   return (
     <SafeAreaView style = { styles.container }>
-      <ScrollView>
-        <View style = { styles.view }>
-      
-          <Text style = { styles.title }>
-            Saisie de date / heure
-          </Text>
+      <KeyboardAvoidingView
+        style = {{
+          flex: 1,
+          alignItems: 'center'
+        }}
+        behavior = "position"
+      >
+        <ScrollView>
+          <View style = { styles.view }>
+            <Card title = "Saisie de date / heure">
+              { dateTimeData.map((data) => {
+                return <View key = { data.getKey }>
+                  { InputGenerator.getInstance().renderDateTimeInput(data) }
+                  <Spacer height = { spacer.input }/>
+                </View>
+              }) }
+            </Card>
 
-          <Line color = "#b4b4b4" margin = {{ top: 10 }}/>
+            <Card title = "Saisie de Texte">
+              { textData.map((data) => {
+                return <View key = { data.getKey }>
+                  { InputGenerator.getInstance().renderTextInput(data) }
+                  <Spacer height = { spacer.input }/>
+                </View>
+              }) }
+            </Card>
 
-          <Spacer height = { 20 }/>
+            <Card title = "Saisie d'une addresse e-mail">
+              { InputGenerator.getInstance().renderEmailInput(emailData) }
+            </Card>
 
-          { dateTimeData.map((data) => {
-            return <View key = { data.getKey }>
-              { InputGenerator.getInstance().renderDateTimeInput(data) }
-              <Spacer height = { 20 }/>
-            </View>
-          }) }
+            <Card title = "Saisie de Nombre">
+              { numberData.map((data) => {
+                return <View key = { data.getKey }>
+                  { InputGenerator.getInstance().renderNumberInput(data) }
+                  <Spacer height = { spacer.input }/>
+                </View>
+              }) }
+            </Card>
 
-          <Spacer height = { 40 }/>
+            <Card title = "Saisie via un dropdown">
+              { InputGenerator.getInstance().renderDropdownInput(dropdownData) }
+            </Card>
 
+            <Card title = "Saisie via un bouton radio">
+              { radioButtonData.map((data) => {
+                return <View key = { data.getKey }>
+                  { InputGenerator.getInstance().renderRadioButtonInput(data) }
+                  <Spacer height = { spacer.input }/>
+                </View>
+              }) }
+            </Card>
 
-
-          <Text style = { styles.title }>
-            Saisie de Texte
-          </Text>
-
-          <Line color = "#b4b4b4" margin = {{ top: 10 }}/>
-
-          <Spacer height = { 20 }/>
-
-          { textData.map((data) => {
-            return <View key = { data.getKey }>
-              { InputGenerator.getInstance().renderTextInput(data) }
-              <Spacer height = { 20 }/>
-            </View>
-          }) }
-
-          <Spacer height = { 40 }/>
-
-
-
-          <Text style = { styles.title }>
-            Saisie d'une addresse e-mail
-          </Text>
-
-          <Line color = "#b4b4b4" margin = {{ top: 10 }}/>
-
-          <Spacer height = { 20 }/>
-
-          { InputGenerator.getInstance().renderEmailInput(emailData) }
-
-          <Spacer height = { 40 }/>
-
-
-
-          <Text style = { styles.title }>
-            Saisie de Nombre
-          </Text>
-
-          <Line color = "#b4b4b4" margin = {{ top: 10 }}/>
-
-          <Spacer height = { 20 }/>
-
-          { numberData.map((data) => {
-            return <View key = { data.getKey }>
-              { InputGenerator.getInstance().renderNumberInput(data) }
-              <Spacer height = { 20 }/>
-            </View>
-          }) }
-
-          <Spacer height = { 40 }/>
-        
-        </View>
-      </ScrollView>
-      
+            <Card title = "Saisie d'un numéro de téléphone">
+              { InputGenerator.getInstance().renderPhoneInput(phoneData) }
+            </Card>
+          
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
@@ -96,18 +104,29 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
       flex: 1,
-      backgroundColor: '#303f56',
+      backgroundColor: color.background,
   },
   view: {
       paddingVertical: 30,
-      paddingHorizontal: 30
+      paddingHorizontal: 20
   },
   title: {
-      color: "#f0f0f0",
+      color: color.text,
       fontWeight: "bold",
       fontSize: 20
+  },
+  card: {
+    backgroundColor: color.primary,
+    paddingVertical: 15,
+    paddingHorizontal: 15,
+    borderRadius: 15
   }
 });
+
+const spacer = {
+  input: 20,
+  card: 40
+}
 
 export default App;
 
