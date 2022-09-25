@@ -56,7 +56,6 @@ Afin d'expliquer l'utilisation de ces différents inputs, nous prendrons comme e
 import { InputTextComponent } from "../Input/input-text/input-text-component";
 import { EInputType } from "../Input/global/enumeration/input-type";
 
-
 const input: InputTextComponent = new InputTextComponent({
     key: "input_required_text",
     label: "Saisir un texte requis",
@@ -102,10 +101,27 @@ const textTypeComponent = {
         fontSize: 16,
         marginTop: 10
     }
-}
+};
 ```
 
-Le processus est le même pour chacun des inputs énoncés au début.
+Le processus est le même pour chacun des inputs énoncés au début. 
+
+Par ailleurs, il y a la possibilités d'effectuer des vérifications lors du clique d'un bouton par exemple. Ainsi, si nous considèrons l'exemple précédent concernant la saisie de texte, nous pourrions introduire un bouton et gérer les erreurs de champs comme suit :
+
+```tsx
+<Button
+    title = "CONFIRMER"
+    onPress = {() => {
+        try {
+            // On effectue des vérifications sur la saisie de texte.
+            input.validator();
+        } catch (e: any) {
+            // Gestion des erreurs souhaitées.
+            console.log(e.message);
+        }
+    }}
+/>
+```
 
 ## Exemple
 
