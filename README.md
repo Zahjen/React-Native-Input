@@ -81,12 +81,12 @@ Finalement, ce composant est accompagné de différents style, comme par exemple
 
 ```ts
 const textTypeComponent = {
-    labelStyle:{ 
+    labelStyle: { 
         color: "#d0e7dd", 
         fontSize: 16,
         marginBottom: 15
     },
-    textInputStyle:{
+    textInputStyle: {
         borderColor: "#303f56",
         borderRadius: 7,
         paddingVertical: 10,
@@ -95,7 +95,7 @@ const textTypeComponent = {
         fontSize: 16
     },
     placeholderTextColor: "#6c7b92",
-    errorStyle:{
+    errorStyle: {
         color: "#fea98a", 
         fontSize: 16,
         marginTop: 10
