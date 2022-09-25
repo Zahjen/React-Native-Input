@@ -1,8 +1,15 @@
 import React from 'react';
-import { StyleSheet, View, Text, SafeAreaView, ScrollView, KeyboardAvoidingView, Platform, Button } from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView, ScrollView, KeyboardAvoidingView } from 'react-native';
 import { Example } from './src/example/example-data';
 import { color } from './src/example/variables/color';
 import Spacer from './src/Input/global/element/spacer';
+import { InputDateTimeComponent } from './src/Input/input-date-time/input-date-time-component';
+import { InputDropdownComponent } from './src/Input/input-dropdown/input-dropdown-component';
+import { InputEmailComponent } from './src/Input/input-email/input-email-component';
+import { InputNumberComponent } from './src/Input/input-number/input-number-component';
+import { InputPhoneComponent } from './src/Input/input-phone/input-phone-component';
+import { InputRadioButtonComponent } from './src/Input/input-radio-button/input-radio-button-component';
+import { InputTextComponent } from './src/Input/input-text/input-text-component';
 import { InputGenerator } from './src/service/input-generator';
 
 interface CardProps {
@@ -25,25 +32,15 @@ const Card: React.FC<CardProps> = (props: CardProps): JSX.Element => {
   </View>
 }
 
-const errorHandle = (setError: React.Dispatch<React.SetStateAction<string>>, radioButtonData: any) => {
-  try {
-    radioButtonData.map((data: any) => {
-      data.validator();
-    })
-  } catch (e: any) {
-    setError(e.message)
-  }
-}
-
 const App = () => {
 
-  let dateTimeData = Example.getInstance().getDateTimeData();
-  let textData = Example.getInstance().getTextData();
-  let emailData = Example.getInstance().getEmailData();
-  let numberData = Example.getInstance().getNumberData();
-  let dropdownData = Example.getInstance().getDropdownData();
-  let radioButtonData = Example.getInstance().getRadioButtonData();
-  let phoneData = Example.getInstance().getPhoneData();
+  let dateTimeData: InputDateTimeComponent[] = Example.getInstance().getDateTimeData();
+  let textData: InputTextComponent[] = Example.getInstance().getTextData();
+  let emailData: InputEmailComponent = Example.getInstance().getEmailData();
+  let numberData: InputNumberComponent[] = Example.getInstance().getNumberData();
+  let dropdownData: InputDropdownComponent = Example.getInstance().getDropdownData();
+  let radioButtonData: InputRadioButtonComponent[] = Example.getInstance().getRadioButtonData();
+  let phoneData: InputPhoneComponent = Example.getInstance().getPhoneData();
 
   return (
     <SafeAreaView style = { styles.container }>
@@ -57,7 +54,7 @@ const App = () => {
         <ScrollView>
           <View style = { styles.view }>
             <Card title = "Saisie de date / heure">
-              { dateTimeData.map((data) => {
+              { dateTimeData.map((data: InputDateTimeComponent) => {
                 return <View key = { data.getKey }>
                   { InputGenerator.getInstance().renderDateTimeInput(data) }
                   <Spacer height = { spacer.input }/>
@@ -66,7 +63,7 @@ const App = () => {
             </Card>
 
             <Card title = "Saisie de Texte">
-              { textData.map((data) => {
+              { textData.map((data: InputTextComponent) => {
                 return <View key = { data.getKey }>
                   { InputGenerator.getInstance().renderTextInput(data) }
                   <Spacer height = { spacer.input }/>
@@ -79,7 +76,7 @@ const App = () => {
             </Card>
 
             <Card title = "Saisie de Nombre">
-              { numberData.map((data) => {
+              { numberData.map((data: InputNumberComponent) => {
                 return <View key = { data.getKey }>
                   { InputGenerator.getInstance().renderNumberInput(data) }
                   <Spacer height = { spacer.input }/>
@@ -92,7 +89,7 @@ const App = () => {
             </Card>
 
             <Card title = "Saisie via un bouton radio">
-              { radioButtonData.map((data) => {
+              { radioButtonData.map((data: InputRadioButtonComponent) => {
                 return <View key = { data.getKey }>
                   { InputGenerator.getInstance().renderRadioButtonInput(data) }
                   <Spacer height = { spacer.input }/>
