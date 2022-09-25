@@ -1,4 +1,4 @@
-import { IInputComponentOption } from "../global/interface/input";
+import { IInputComponentOption } from "../global/interface/object/input";
 
 
 /**

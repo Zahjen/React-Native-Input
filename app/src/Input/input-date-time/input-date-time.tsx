@@ -1,6 +1,5 @@
 import React from "react";
-import { Button, Pressable, Text, View } from "react-native";
-import DatePicker from 'react-native-date-picker';
+import { Pressable, Text, View } from "react-native";
 import Fontisto from "react-native-vector-icons/Fontisto";
 import Spacer from "../global/element/spacer";
 import { InputDateTimeController } from "./input-date-time-controller";

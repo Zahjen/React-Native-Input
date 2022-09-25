@@ -1,4 +1,4 @@
-import { EInputType } from "../enumeration/input-type";
+import { EInputType } from "../../enumeration/input-type";
 
 /**
  * Interface d'objet relative à la défintion et à la construction d'un input, et composée de :

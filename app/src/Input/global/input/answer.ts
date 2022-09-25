@@ -1,5 +1,5 @@
 import { UndefinedException } from "../exception/required-attribute/undefined-exception";
-import { IAnswer } from "../interface/answer";
+import { IAnswer } from "../interface/object/answer";
 
 /**
  * Classe relative à une réponse possible pour un input du type radio par exemple.

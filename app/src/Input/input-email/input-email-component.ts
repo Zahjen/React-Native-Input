@@ -1,4 +1,3 @@
-import { KeyboardTypeOptions } from "react-native";
 import { EInputType } from "../global/enumeration/input-type";
 import { regex } from "../global/variables/regex";
 import { InputTextComponent } from "../input-text/input-text-component";

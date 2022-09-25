@@ -1,4 +1,4 @@
-import { IInputSetChoiceComponentOption } from "../global/interface/input-set-choice";
+import { IInputSetChoiceComponentOption } from "../global/interface/object/input-set-choice";
 
 /**
  * Interface d'objet relative à la défintion et à la construction d'un input, et composée de :

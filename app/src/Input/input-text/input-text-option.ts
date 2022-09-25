@@ -1,6 +1,5 @@
 import { KeyboardTypeOptions } from "react-native";
-import { IInputBaseComponentOption } from "../global/interface/input-base";
-
+import { IInputBaseComponentOption } from "../global/interface/object/input-base";
 
 /**
  * Interface d'objet relative à la défintion et à la construction d'un input, et composée de :

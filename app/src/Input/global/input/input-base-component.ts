@@ -1,4 +1,4 @@
-import { IInputBaseComponentOption } from "../interface/input-base";
+import { IInputBaseComponentOption } from "../interface/object/input-base";
 import { InputComponent } from "./input-component";
 
 /**

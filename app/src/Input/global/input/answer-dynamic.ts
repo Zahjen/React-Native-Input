@@ -1,5 +1,5 @@
 import { EmptyException } from "../exception/required-attribute/empty-exception";
-import { IAnswerDynamic } from "../interface/answer-dynamic";
+import { IAnswerDynamic } from "../interface/object/answer-dynamic";
 import { TypeInput } from "../type/input-type";
 import { Answer } from "./answer";
 

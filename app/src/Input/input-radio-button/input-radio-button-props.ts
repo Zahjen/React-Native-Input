@@ -1,7 +1,5 @@
 import { GestureResponderEvent, StyleProp, TextStyle, ViewStyle } from "react-native"
-import { IMargin } from "../global/interface/margin"
-
-
+import { IMargin } from "../global/interface/object/margin"
 
 /**
  * Interface composée de :

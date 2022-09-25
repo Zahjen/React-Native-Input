@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { IMargin } from "../interface/margin";
+import { IMargin } from "../interface/object/margin";
 
 /**
  * Interface composée de :

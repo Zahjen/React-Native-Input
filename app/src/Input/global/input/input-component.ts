@@ -1,6 +1,6 @@
 import { EInputType } from "../enumeration/input-type";
 import { UndefinedException } from "../exception/required-attribute/undefined-exception";
-import { IInputComponentOption } from "../interface/input";
+import { IInputComponentOption } from "../interface/object/input";
 
 /**
  * Classe abstraite relative aux diverses caractéristiques "obligatoires" que peut comporter un input.

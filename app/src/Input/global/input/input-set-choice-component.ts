@@ -1,6 +1,6 @@
 import { EmptyException } from "../exception/required-attribute/empty-exception";
 import { UndefinedException } from "../exception/required-attribute/undefined-exception";
-import { IInputSetChoiceComponentOption } from "../interface/input-set-choice";
+import { IInputSetChoiceComponentOption } from "../interface/object/input-set-choice";
 import { Answer } from "./answer";
 import { InputBaseComponent } from "./input-base-component";
 

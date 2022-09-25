@@ -6,7 +6,7 @@ import { InputRadioButtonComponent } from "./input-radio-button-component";
 import { InputRadioButtonController } from "./input-radio-button-controller";
 import { PropsInputRadioButton, PropsRadioButtonElement } from "./input-radio-button-props";
 import Fontisto from "react-native-vector-icons/Fontisto";
-import { IMargin } from "../global/interface/margin";
+import { IMargin } from "../global/interface/object/margin";
 
 
 /**
