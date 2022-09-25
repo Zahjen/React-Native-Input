@@ -1,3 +1,6 @@
+import { EInputType } from "../global/enumeration/input-type";
+import { InvalidInputTypeException } from "../global/exception/required-attribute/invalid-input-type";
+import { RequiredFieldException } from "../global/exception/validator/required-field-exception";
 import { InputSetChoiceComponent } from "../global/input/input-set-choice-component";
 import { IInputRadioButtonComponentOption } from "./input-radio-button-option";
 
@@ -43,6 +46,20 @@ export class InputRadioButtonComponent extends InputSetChoiceComponent<string> {
         this._value = (value === undefined || value === null)
             ? "" 
             : value.trim();
+    }
+
+    // --------------------------
+    // Implémentation
+    // --------------------------
+
+    public override validator(): void {
+        // On vérifie que la valeur n'est ni null, ni undefined. 
+        super.validator();
+
+        // Si le champs est requis mais rien n'a été saisie, on lève une exception.
+        if (this._isRequired && this._value === "") throw new RequiredFieldException(this.getKey);
+
+        this.value = this._value;
     }
    
 }

@@ -1,4 +1,7 @@
 import { KeyboardTypeOptions } from "react-native";
+import { EInputType } from "../global/enumeration/input-type";
+import { InvalidInputTypeException } from "../global/exception/required-attribute/invalid-input-type";
+import { RequiredFieldException } from "../global/exception/validator/required-field-exception";
 import { InputBaseComponent } from "../global/input/input-base-component";
 import { IInputTextComponentOption } from "./input-text-option";
 
@@ -76,6 +79,10 @@ export class InputTextComponent extends InputBaseComponent<string> {
             : value.trim();
     }
 
+    public override set type(type: EInputType) {
+        if (type !== EInputType.TEXT) throw new InvalidInputTypeException(this._key, 'TEXT')
+    }
+
     // --------------------------
     // Méthode
     // --------------------------
@@ -96,6 +103,23 @@ export class InputTextComponent extends InputBaseComponent<string> {
      */
      public isEmptyAndNotRequired() : boolean {
         return !(this._isRequired) && this._value === "";
+    }
+
+    // --------------------------
+    // Implémentation
+    // --------------------------
+
+    public override validator(): void {
+        // On vérifie que la valeur n'est ni null, ni undefined.
+        super.validator();
+
+        // On retire les espaces à droite et à gauche de la saisie.
+        this._value = this._value.trim();
+
+        // Si la valeur est de type string, et que la valeur saisie est vide après avoir retirer les espaces à droite et à gauche, alors que le champ est requis, on lève une eception.
+        if (this._isRequired && this._value === "") throw new RequiredFieldException(this.getKey);
+
+        this.value = this._value;
     }
    
 }

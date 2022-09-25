@@ -41,13 +41,13 @@ export const dateTimeComponent = {
         fontSize: 16 
     },
     iconPressableStyle: {
-        color: color.text,
+        color: color.secondary,
         fontSize: 18 
     },
-    confirmTextButtonColor: "#98bc62",
+    confirmTextButtonColor: color.confirm,
     confirmButtonBackgroundColor: color.background,
     cancelButtonBackgroundColor: color.background,
-    cancelTextButtonColor: "#b44649"
+    cancelTextButtonColor: color.cancel
 }
 
 /**

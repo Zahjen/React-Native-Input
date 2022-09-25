@@ -110,7 +110,7 @@ export class Example {
             label: "Saisir une adresse e-mail",
             type: EInputType.EMAIL,
             placeholder: "Exemple: exemple@test.com",
-            isRequired: false,
+            isRequired: true,
             keyboardType: "email-address"
         })
     }
@@ -198,10 +198,15 @@ export class Example {
             isRequired: true,
             value: new Answer({
                 id: 0,
-                key: "Sélectionner une option",
+                key: "option-0",
                 value: "Sélectionner une option"
             }),
             answers: [
+                new Answer({
+                    id: 0,
+                    key: "option-0",
+                    value: "Sélectionner une option"
+                }),
                 new Answer({
                     id: 1,
                     key: "option-1",

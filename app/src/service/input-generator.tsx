@@ -106,7 +106,7 @@ export class InputGenerator {
                 openDatePickerPressableStyle = { dateTimeComponent.openDatePickerPressableStyle }
                 datePickerTextStyle = { dateTimeComponent.datePickerTextStyle }
                 iconPressableStyle = { dateTimeComponent.iconPressableStyle }
-                confirmTextButtonColor = { dateTimeComponent.confirmButtonBackgroundColor }
+                confirmTextButtonColor = { dateTimeComponent.confirmTextButtonColor }
                 confirmButtonBackgroundColor = { dateTimeComponent.confirmButtonBackgroundColor }
                 cancelButtonBackgroundColor = { dateTimeComponent.cancelButtonBackgroundColor }
                 cancelTextButtonColor = { dateTimeComponent.cancelTextButtonColor }

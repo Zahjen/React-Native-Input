@@ -1,3 +1,5 @@
+import { EInputType } from "../global/enumeration/input-type";
+import { InvalidInputTypeException } from "../global/exception/required-attribute/invalid-input-type";
 import { InputComponent } from "../global/input/input-component";
 import { IInputDateComponentOption } from "./input-date-time-option";
 
@@ -19,6 +21,9 @@ export class InputDateTimeComponent extends InputComponent<Date> {
         super(options);
     }
 
+    // --------------------------
+    // Surcharge
+    // --------------------------
 
     // ----------------
     // Méthode
@@ -93,12 +98,7 @@ export class InputDateTimeComponent extends InputComponent<Date> {
      * @returns L'heure correctement formatter à placer dans la base de données.
      */
     public timeFormatDb(): string {
-        const hour: number = this._value?.getHours();
-        const minutes: number = this._value?.getMinutes();
-        const fullHour: string = (hour! < 10 ? '0' : '') + hour;
-        const fullMinute: string = (minutes! < 10 ? '0' : '') + minutes;
-
-        return `${fullHour}:${fullMinute}`;
+        return this.timeFormatScreen().replace(" ", "");;
     }
 
 }

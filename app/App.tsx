@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, SafeAreaView, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView, ScrollView, KeyboardAvoidingView, Platform, Button } from 'react-native';
 import { Example } from './src/example/example-data';
 import { color } from './src/example/variables/color';
 import Spacer from './src/Input/global/element/spacer';
@@ -23,6 +23,16 @@ const Card: React.FC<CardProps> = (props: CardProps): JSX.Element => {
 
     <Spacer height = { spacer.card }/>
   </View>
+}
+
+const errorHandle = (setError: React.Dispatch<React.SetStateAction<string>>, radioButtonData: any) => {
+  try {
+    radioButtonData.map((data: any) => {
+      data.validator();
+    })
+  } catch (e: any) {
+    setError(e.message)
+  }
 }
 
 const App = () => {
@@ -93,7 +103,6 @@ const App = () => {
             <Card title = "Saisie d'un numéro de téléphone">
               { InputGenerator.getInstance().renderPhoneInput(phoneData) }
             </Card>
-          
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
@@ -129,4 +138,3 @@ const spacer = {
 }
 
 export default App;
-

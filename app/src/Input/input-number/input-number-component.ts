@@ -1,4 +1,8 @@
+import { EInputType } from "../global/enumeration/input-type";
 import { ENumericalDataType } from "../global/enumeration/numerical-data-type";
+import { InvalidInputTypeException } from "../global/exception/required-attribute/invalid-input-type";
+import { NumberException } from "../global/exception/validator/number-exception";
+import { errorMessage } from "../global/variables/error-message";
 import { regex } from "../global/variables/regex";
 import { InputTextComponent } from "../input-text/input-text-component";
 import { IInputNumberComponentOption } from "./input-number-option";
@@ -47,6 +51,14 @@ export class InputNumberComponent extends InputTextComponent {
         this._numericalDataType = (numericalDataType === undefined || numericalDataType === null)
             ? ENumericalDataType.DECIMAL
             : numericalDataType;
+    }
+
+    // --------------------------
+    // Surcharge
+    // --------------------------
+
+    public override set type(type: EInputType) {
+        if (type !== EInputType.NUMBER) throw new InvalidInputTypeException(this._key, 'NUMBER')
     }
 
     // --------------------------
@@ -111,6 +123,41 @@ export class InputNumberComponent extends InputTextComponent {
     public isNotNegativeDecimal() : boolean {
         return this._numericalDataType === ENumericalDataType.NEGATIVE_DECIMAL 
             && !this._value.match(new RegExp(regex.negativeDecimal));
+    }
+
+    // --------------------------
+    // Implémentation
+    // --------------------------
+
+    public override validator(): void {
+        // On vérifie que la valeur n'est ni null, ni undefined. On vérifie ensuite que si le champ est requis, il a bien été renseigné.
+        super.validator();
+
+        // Si la saisie n'est pas un entier, on lève une exception
+        if (this._value !== "" && this.isNotInteger()) 
+            throw new NumberException(this.getKey, errorMessage.invalidInteger);
+
+        // Si la saisie n'est pas un entier positif, on lève une exception
+        else if (this._value !== "" && this.isNotNonNegativeInteger()) 
+            throw new NumberException(this.getKey, errorMessage.invalidNonNegativeInteger);
+
+        // Si la saisie n'est pas un entier négatif, on lève une exception
+        else if (this._value !== "" && this.isNotNegativeInteger()) 
+            throw new NumberException(this.getKey, errorMessage.invalidNegativeInteger);
+
+        // Si la saisie n'est pas un décimal, on lève une exception
+        else if (this._value !== "" && this.isNotDecimal()) 
+            throw new NumberException(this.getKey, errorMessage.invalidDecimal);
+
+        // Si la saisie n'est pas un décimal positif, on lève une exception
+        else if (this._value !== "" && this.isNotNonNegativeDecimal()) 
+            throw new NumberException(this.getKey, errorMessage.invalidNonNegativeDecimal);
+
+        // Si la saisie n'est pas un décimal négatif, on lève une exception
+        else if (this._value !== "" && this.isNotNegativeDecimal()) 
+            throw new NumberException(this.getKey, errorMessage.invalidNegativeDecimal);
+
+        this.value = this._value;
     }
 
 

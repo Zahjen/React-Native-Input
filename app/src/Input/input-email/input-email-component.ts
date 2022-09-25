@@ -1,4 +1,6 @@
 import { EInputType } from "../global/enumeration/input-type";
+import { InvalidInputTypeException } from "../global/exception/required-attribute/invalid-input-type";
+import { InvalidEmailException } from "../global/exception/validator/invalid-email-exception";
 import { regex } from "../global/variables/regex";
 import { InputTextComponent } from "../input-text/input-text-component";
 import { IInputEmailComponentOption } from "./input-email-option";
@@ -36,6 +38,10 @@ export class InputEmailComponent extends InputTextComponent {
     // Surcharge
     // --------------------------
 
+    public override set type(type: EInputType) {
+        if (type !== EInputType.EMAIL) throw new InvalidInputTypeException(this._key, 'EMAIL')
+    }
+
     // --------------------------
     // Méthode
     // --------------------------
@@ -47,6 +53,20 @@ export class InputEmailComponent extends InputTextComponent {
      */
     public isNotEmailValid() : boolean {
         return this.getType === EInputType.EMAIL && !this._value.match(new RegExp(regex.email));
+    }
+
+    // --------------------------
+    // Implémentation
+    // --------------------------
+
+    public override validator(): void {
+        // On vérifie que la valeur n'est ni null, ni undefined. On vérifie ensuite que si le champ est requis, il a bien été renseigné.
+        super.validator();
+
+        // Si l'email fourni n'a pas le bon format, on lève une exception
+        if (this._value !== "" && this.isNotEmailValid()) throw new InvalidEmailException(this._key);
+
+        this.value = this._value;
     }
    
 }

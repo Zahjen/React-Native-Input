@@ -1,3 +1,6 @@
+import { EInputType } from "../global/enumeration/input-type";
+import { InvalidInputTypeException } from "../global/exception/required-attribute/invalid-input-type";
+import { RequiredFieldException } from "../global/exception/validator/required-field-exception";
 import { Answer } from "../global/input/answer";
 import { InputSetChoiceComponent } from "../global/input/input-set-choice-component";
 import { IInputDropdownComponentOption } from "./input-dropdown-option";
@@ -60,5 +63,23 @@ export class InputDropdownComponent extends InputSetChoiceComponent<Answer> {
         this._answers = (answers === undefined || answers === null)
             ? [] 
             : answers;
+    }
+
+    public override set type(type: EInputType) {
+        if (type !== EInputType.DROPDOWN) throw new InvalidInputTypeException(this._key, 'DROPDOWN')
+    }
+
+    // --------------------------
+    // Implémentation
+    // --------------------------
+
+    public override validator(): void {
+        // On vérifie que la valeur n'est ni null, ni undefined.
+        super.validator();
+
+        // On vérifie que si le champ est requis, une option a bien été sélectionnée.
+        if (this._isRequired && this._value.getId === 0) throw new RequiredFieldException(this.getKey);
+
+        this.value = this._value;
     }
 }

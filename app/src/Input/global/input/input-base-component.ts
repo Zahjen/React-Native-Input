@@ -1,3 +1,5 @@
+import { UndefinedException } from "../exception/required-attribute/undefined-exception";
+import { Validator } from "../interface/abstraction/validator";
 import { IInputBaseComponentOption } from "../interface/object/input-base";
 import { InputComponent } from "./input-component";
 
@@ -8,10 +10,11 @@ import { InputComponent } from "./input-component";
  * @property {`string`} _error : Correspond à l'erreur sera affichée si une valeur incorrecte est saisie par l'utilisateur.
  * 
  * @extends {InputComponent<T>} Classe abstraite relative aux diverses caractéristiques "obligatoires" que peut comporter un input.
+ * @implements {Validator} Interface permettant d'opérer des validation sur le champ correspondant.
  * 
  * @template T Type de la valeur que peut prendre un input, i.e. string, number, ...
  */
-export abstract class InputBaseComponent<T> extends InputComponent<T> {
+export abstract class InputBaseComponent<T> extends InputComponent<T> implements Validator {
 
     // --------------------------
     // Déclaration des attributs
@@ -59,6 +62,15 @@ export abstract class InputBaseComponent<T> extends InputComponent<T> {
     public set isRequired(isRequired: boolean) {
         // Par défaut on pose que le champ est requis
         this._isRequired = (isRequired === undefined) ? true : isRequired;
+    }
+
+    // --------------------------
+    // Implémentation
+    // --------------------------
+
+    public validator(): void {
+        // Si aucune valeur n'est entrée, on lève une exception.
+        if (this._value === undefined || this._value === null) throw new UndefinedException('InputValidator', 'value');
     }
 
 }

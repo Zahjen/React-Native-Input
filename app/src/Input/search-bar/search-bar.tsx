@@ -1,5 +1,6 @@
 import React from "react";
 import { TextInput, View } from "react-native";
+import { color } from "../../example/variables/color";
 import { PropsSearchBarComponent } from "./search-bar-props";
 
 /**
@@ -23,7 +24,7 @@ import { PropsSearchBarComponent } from "./search-bar-props";
  * ```
  * SearchBarComponent.defaultProps = {
  *  styleContainer: {
- *      borderColor: "#3d3d3d",
+ *      borderColor: color.text,
  *      borderWidth: 0.5,
  *      borderRadius: 30,
  *      paddingHorizontal: 20,
@@ -50,7 +51,7 @@ const SearchBarComponent: React.FC<PropsSearchBarComponent> = (props: PropsSearc
 
 SearchBarComponent.defaultProps = {
     styleContainer: {
-        borderColor: "#3d3d3d",
+        borderColor: color.text,
         borderWidth: 0.5,
         borderRadius: 30,
         paddingHorizontal: 20,
