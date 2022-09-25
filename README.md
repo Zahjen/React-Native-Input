@@ -54,6 +54,8 @@ Afin d'expliquer l'utilisation de ces différents inputs, nous prendrons comme e
 
 ```ts
 import { InputTextComponent } from "../Input/input-text/input-text-component";
+import { EInputType } from "../Input/global/enumeration/input-type";
+
 
 const input: InputTextComponent = new InputTextComponent({
     key: "input_required_text",
