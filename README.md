@@ -106,7 +106,7 @@ const textTypeComponent = {
 
 Le processus est le même pour chacun des inputs énoncés au début. 
 
-Par ailleurs, il y a la possibilités d'effectuer des vérifications lors du clique d'un bouton par exemple. Ainsi, si nous considèrons l'exemple précédent concernant la saisie de texte, nous pourrions introduire un bouton et gérer les erreurs de champs comme suit :
+Par ailleurs, il y a la possibilité d'effectuer des vérifications lors du clique d'un bouton par exemple. Ainsi, si nous considèrons l'exemple précédent concernant la saisie de texte, nous pourrions introduire un bouton et gérer les erreurs de champs comme suit :
 
 ```tsx
 <Button
