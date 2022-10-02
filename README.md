@@ -46,6 +46,13 @@ npm install --save react-native-vector-icons
 
 # installation avec yarn
 yarn add react-native-vector-icons
+
+# S'il y a utilisation de TypeScript, on ajoute les paquets suivants :
+# avec npm
+npm i --save-dev @types/react-native-vector-icons
+
+# avec yarn
+yarn add @types/react-native-vector-icons
 ```
 
 ## Utilisation
