@@ -46,10 +46,10 @@ export abstract class InputSetChoiceComponent<T> extends InputBaseComponent<T> {
     /** Méthode permettant de poser les réponses qui peuvent être associées à un input, i.e. si on a un input de type bouton radio, alors on aura comme réponses possibes ["appartement", "maison"]. */
     public set answers(answers: Answer[]) {
         // Si les réponses ne sont pas définies on lève une exception
-        if (answers === undefined) throw new UndefinedException("InputRadioButtonComponent", "answers");
+        if (answers === undefined) throw new UndefinedException(this.getKey, "answers");
 
         // Si un tableau de réponses est donné mais est vide, on lève une exception
-        if (answers.length <= 0) throw new EmptyException("InputRadioButtonComponent", "answers");
+        if (answers.length <= 0) throw new EmptyException(this.getKey, "answers");
 
         this._answers = answers;
     }

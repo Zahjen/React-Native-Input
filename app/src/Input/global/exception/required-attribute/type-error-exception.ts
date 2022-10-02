@@ -7,8 +7,8 @@
     // Constructeur
     // --------------------------
 
-    constructor(className: string, attributeName: string, type: string) {
-        super(`${ className } : L'attribut ${ attributeName } doit être un ${ type }.`);
+    constructor(identifier: string, attributeName: string, type: string) {
+        super(`${ identifier } : L'attribut ${ attributeName } doit être un ${ type }.`);
         Object.setPrototypeOf(this, TypeErrorException.prototype);
     }
 }

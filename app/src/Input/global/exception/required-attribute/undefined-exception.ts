@@ -7,8 +7,8 @@
     // Constructeur
     // --------------------------
 
-    constructor(className: string, attributeName: string) {
-        super(`${ className } : L'attribut ${ attributeName } doit être renseigné.`);
+    constructor(identifier: string, attributeName: string) {
+        super(`${ identifier } : L'attribut ${ attributeName } doit être renseigné.`);
         Object.setPrototypeOf(this, UndefinedException.prototype);
     }
 }

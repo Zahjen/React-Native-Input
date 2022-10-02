@@ -1,5 +1,6 @@
 import { EInputType } from "../global/enumeration/input-type";
 import { InvalidInputTypeException } from "../global/exception/required-attribute/invalid-input-type";
+import { UndefinedException } from "../global/exception/required-attribute/undefined-exception";
 import { RequiredFieldException } from "../global/exception/validator/required-field-exception";
 import { Answer } from "../global/input/answer";
 import { InputSetChoiceComponent } from "../global/input/input-set-choice-component";
@@ -66,7 +67,12 @@ export class InputDropdownComponent extends InputSetChoiceComponent<Answer> {
     }
 
     public override set type(type: EInputType) {
-        if (type !== EInputType.DROPDOWN) throw new InvalidInputTypeException(this._key, 'DROPDOWN')
+        // Si aucun type n'est entré, on lève une exception
+        if (type === null || type === undefined) throw new UndefinedException(this.getKey, "type");
+
+        if (type !== EInputType.DROPDOWN) throw new InvalidInputTypeException(this._key, 'DROPDOWN');
+
+        this._type = type;
     }
 
     // --------------------------

@@ -35,8 +35,8 @@ export abstract class InputComponent<T> {
     constructor(
         options: IInputComponentOption<T>
     ) {
-        this.value = options.value!;
         this.key = options.key;
+        this.value = options.value!;
         this.label = options.label;
         this.type = options.type;
     }
@@ -68,7 +68,7 @@ export abstract class InputComponent<T> {
     /** Méthode permettant de poser la valeur d'un input. */
     public set value(value: T) {
         // Si aucune valeur n'est entrée, on lève une exception
-        if (value === undefined || value === null) throw new UndefinedException('InputComponent', 'value');
+        if (value === undefined || value === null) throw new UndefinedException(this.getKey, 'value');
 
         this._value = value;
     }
@@ -76,7 +76,7 @@ export abstract class InputComponent<T> {
     /** Méthode permettant de poser la clé permettant d'identifier un input spécifique. */
     public set key(key: string) {
         // Si aucune clé n'est fournie, on lève une exception
-        if (key === undefined || key === null) throw new UndefinedException('InputComponent', 'key');
+        if (key === undefined || key === null) throw new UndefinedException(this._key, 'key');
 
         // On retire les espaces à droite et à gauche de la valeur
         key = key.trim();
@@ -90,13 +90,13 @@ export abstract class InputComponent<T> {
     /** Méthode permettant de poser le label associé à un input particulier. */
     public set label(label: string) {
         // Si aucun label n'est entré, on lève une exception
-        if (label === undefined || label === null) throw new UndefinedException('InputComponent', 'label');
+        if (label === undefined || label === null) throw new UndefinedException(this.getKey, 'label');
 
         // On retire les espaces à droite et à gauche de la valeur
         label = label.trim();
 
         // Si le label entré est vide on lève une exception
-        if (label === "") throw new UndefinedException("InputComponent", "label");
+        if (label === "") throw new UndefinedException(this.getKey, "label");
 
         this._label = label;
     }
@@ -104,7 +104,7 @@ export abstract class InputComponent<T> {
     /** Méthode permettant de poser le type d'un input particulier, e.g. 'radio', 'dropdown', 'text', etc. */
     public set type(type: EInputType) {
         // Si aucun type n'est entré, on lève une exception
-        if (type === null || type === undefined) throw new UndefinedException("InputComponent", "type");
+        if (type === null || type === undefined) throw new UndefinedException(this.getKey, "type");
 
         this._type = type;
     }

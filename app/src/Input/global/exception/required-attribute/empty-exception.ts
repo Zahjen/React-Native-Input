@@ -7,8 +7,8 @@
     // Constructeur
     // --------------------------
 
-    constructor(className: string, attributeName: string) {
-        super(`${ className } : L'attribut ${ attributeName } ne peut être vide.`);
+    constructor(identifier: string, attributeName: string) {
+        super(`${ identifier } : L'attribut ${ attributeName } ne peut être vide.`);
         Object.setPrototypeOf(this, EmptyException.prototype);
     }
 }

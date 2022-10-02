@@ -1,5 +1,3 @@
-import { EInputType } from "../global/enumeration/input-type";
-import { InvalidInputTypeException } from "../global/exception/required-attribute/invalid-input-type";
 import { RequiredFieldException } from "../global/exception/validator/required-field-exception";
 import { InputSetChoiceComponent } from "../global/input/input-set-choice-component";
 import { IInputRadioButtonComponentOption } from "./input-radio-button-option";

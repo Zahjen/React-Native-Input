@@ -50,7 +50,9 @@ export class InputDropdownController {
         
         // Changer ca pour généraliser => si c'est requi est que 'est vide ou égale a 0 alors error
         if (props.input.getIsRequired && props.input.getValue.getId === 0) 
-            props.input.error = 'Veuillez sélectionner un intervenant';
+            props.input.error = 'Veuillez sélectionner une option';
+        
+        else props.input.error = "";
         
         // On met à jour l'erreur à afficher à l'écran de l'utiisateur
         props.setError(props.input.getError);

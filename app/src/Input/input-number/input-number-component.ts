@@ -1,6 +1,7 @@
 import { EInputType } from "../global/enumeration/input-type";
 import { ENumericalDataType } from "../global/enumeration/numerical-data-type";
 import { InvalidInputTypeException } from "../global/exception/required-attribute/invalid-input-type";
+import { UndefinedException } from "../global/exception/required-attribute/undefined-exception";
 import { NumberException } from "../global/exception/validator/number-exception";
 import { errorMessage } from "../global/variables/error-message";
 import { regex } from "../global/variables/regex";
@@ -58,7 +59,12 @@ export class InputNumberComponent extends InputTextComponent {
     // --------------------------
 
     public override set type(type: EInputType) {
-        if (type !== EInputType.NUMBER) throw new InvalidInputTypeException(this._key, 'NUMBER')
+        // Si aucun type n'est entré, on lève une exception
+        if (type === null || type === undefined) throw new UndefinedException(this.getKey, "type");
+        
+        if (type !== EInputType.NUMBER) throw new InvalidInputTypeException(this.getKey, 'NUMBER');
+
+        this._type = type;
     }
 
     // --------------------------

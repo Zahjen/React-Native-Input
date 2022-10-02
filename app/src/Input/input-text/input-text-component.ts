@@ -1,6 +1,7 @@
 import { KeyboardTypeOptions } from "react-native";
 import { EInputType } from "../global/enumeration/input-type";
 import { InvalidInputTypeException } from "../global/exception/required-attribute/invalid-input-type";
+import { UndefinedException } from "../global/exception/required-attribute/undefined-exception";
 import { RequiredFieldException } from "../global/exception/validator/required-field-exception";
 import { InputBaseComponent } from "../global/input/input-base-component";
 import { IInputTextComponentOption } from "./input-text-option";
@@ -80,7 +81,12 @@ export class InputTextComponent extends InputBaseComponent<string> {
     }
 
     public override set type(type: EInputType) {
-        if (type !== EInputType.TEXT) throw new InvalidInputTypeException(this._key, 'TEXT')
+        // Si aucun type n'est entré, on lève une exception
+        if (type === null || type === undefined) throw new UndefinedException(this.getKey, "type");
+        
+        if (type !== EInputType.TEXT) throw new InvalidInputTypeException(this.getKey, 'TEXT');
+
+        this._type = type;
     }
 
     // --------------------------

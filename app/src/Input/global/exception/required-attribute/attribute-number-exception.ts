@@ -7,8 +7,8 @@
     // Constructeur
     // --------------------------
 
-    constructor(className: string, attributeName: string) {
-        super(`${ className } : L'attribut ${ attributeName } doit être de type nombre.`);
+    constructor(identifier: string, attributeName: string) {
+        super(`${ identifier } : L'attribut ${ attributeName } doit être de type nombre.`);
         Object.setPrototypeOf(this, AttributeNumberException.prototype);
     }
 }

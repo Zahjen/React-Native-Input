@@ -7,8 +7,8 @@
     // Constructeur
     // --------------------------
 
-    constructor(className: string, attributeName: string) {
-        super(`${ className } : L'attribut ${ attributeName } ne peut être négatif.`);
+    constructor(identifier: string, attributeName: string) {
+        super(`${ identifier } : L'attribut ${ attributeName } ne peut être négatif.`);
         Object.setPrototypeOf(this, NonNegativeNumberException.prototype);
     }
 }

@@ -70,7 +70,7 @@ export abstract class InputBaseComponent<T> extends InputComponent<T> implements
 
     public validator(): void {
         // Si aucune valeur n'est entrée, on lève une exception.
-        if (this._value === undefined || this._value === null) throw new UndefinedException('InputValidator', 'value');
+        if (this._value === undefined || this._value === null) throw new UndefinedException(this.getKey, 'value');
     }
 
 }

@@ -7,8 +7,8 @@
     // Constructeur
     // --------------------------
 
-    constructor(className: string, attributeName: string) {
-        super(`${ className } : L'attribut ${ attributeName } n'est pas au bon format pour la génération d'une date ou d'une heure.`);
+    constructor(identifier: string, attributeName: string) {
+        super(`${ identifier } : L'attribut ${ attributeName } n'est pas au bon format pour la génération d'une date ou d'une heure.`);
         Object.setPrototypeOf(this, DateTimeFormatException.prototype);
     }
 }

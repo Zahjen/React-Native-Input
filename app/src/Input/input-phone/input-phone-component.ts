@@ -8,6 +8,7 @@ import { frenchCountries } from "../global/variables/french-countries";
 import { InputTextComponent } from "../input-text/input-text-component";
 import { IInputPhoneComponentOption } from "./input-phone-option";
 import { PhoneNumberException } from "../global/exception/validator/phone-number-exception";
+import { UndefinedException } from "../global/exception/required-attribute/undefined-exception";
 
 /**
  * Classe relative à un input de type téléphone.
@@ -57,7 +58,12 @@ export class InputPhoneComponent extends InputTextComponent {
     // --------------------------
 
     public override set type(type: EInputType) {
-        if (type !== EInputType.TEL) throw new InvalidInputTypeException(this._key, 'TEL')
+        // Si aucun type n'est entré, on lève une exception
+        if (type === null || type === undefined) throw new UndefinedException(this.getKey, "type");
+        
+        if (type !== EInputType.TEL) throw new InvalidInputTypeException(this.getKey, 'TEL');
+
+        this._type = type;
     }
 
     // --------------------------
