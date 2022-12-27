@@ -1,6 +1,6 @@
 import { StyleProp, TextStyle, ViewStyle } from "react-native";
-import { EInputType } from "../../Input/global/enumeration/input-type";
-import { InputRadioButtonComponent } from "../../Input/input-radio-button/input-radio-button-component";
+import { EInputType } from "../../enumeration/input-type";
+import { InputRadioButtonComponent } from "../../input-set/input-radio-button/input-radio-button-component";
 import { color } from "./color";
 
 /**

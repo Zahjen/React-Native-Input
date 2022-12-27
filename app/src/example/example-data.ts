@@ -1,14 +1,14 @@
 import { Platform } from "react-native";
-import { EInputType } from "../Input/global/enumeration/input-type";
-import { ENumericalDataType } from "../Input/global/enumeration/numerical-data-type";
-import { Answer } from "../Input/global/input/answer";
-import { InputDateTimeComponent } from "../Input/input-date-time/input-date-time-component";
-import { InputDropdownComponent } from "../Input/input-dropdown/input-dropdown-component";
-import { InputEmailComponent } from "../Input/input-email/input-email-component";
-import { InputNumberComponent } from "../Input/input-number/input-number-component";
-import { InputPhoneComponent } from "../Input/input-phone/input-phone-component";
-import { InputRadioButtonComponent } from "../Input/input-radio-button/input-radio-button-component";
-import { InputTextComponent } from "../Input/input-text/input-text-component";
+import { EInputType } from "../enumeration/input-type";
+import { ENumericalDataType } from "../enumeration/numerical-data-type";
+import { Answer } from "../input-set/answer/answer";
+import { InputDateTimeComponent } from "../input-set/input-date-time/input-date-time-component";
+import { InputDropdownComponent } from "../input-set/input-dropdown/input-dropdown-component";
+import { InputEmailComponent } from "../input-set/input-email/input-email-component";
+import { InputNumberComponent } from "../input-set/input-number/input-number-component";
+import { InputPhoneComponent } from "../input-set/input-phone/input-phone-component";
+import { InputRadioButtonComponent } from "../input-set/input-radio-button/input-radio-button-component";
+import { InputTextComponent } from "../input-set/input-text/input-text-component";
 
 
 /**

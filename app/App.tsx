@@ -2,14 +2,14 @@ import React from 'react';
 import { StyleSheet, View, Text, SafeAreaView, ScrollView, KeyboardAvoidingView } from 'react-native';
 import { Example } from './src/example/example-data';
 import { color } from './src/example/variables/color';
-import Spacer from './src/Input/global/element/spacer';
-import { InputDateTimeComponent } from './src/Input/input-date-time/input-date-time-component';
-import { InputDropdownComponent } from './src/Input/input-dropdown/input-dropdown-component';
-import { InputEmailComponent } from './src/Input/input-email/input-email-component';
-import { InputNumberComponent } from './src/Input/input-number/input-number-component';
-import { InputPhoneComponent } from './src/Input/input-phone/input-phone-component';
-import { InputRadioButtonComponent } from './src/Input/input-radio-button/input-radio-button-component';
-import { InputTextComponent } from './src/Input/input-text/input-text-component';
+import Spacer from './src/element/spacer';
+import { InputDateTimeComponent } from './src/input-set/input-date-time/input-date-time-component';
+import { InputDropdownComponent } from './src/input-set/input-dropdown/input-dropdown-component';
+import { InputEmailComponent } from './src/input-set/input-email/input-email-component';
+import { InputNumberComponent } from './src/input-set/input-number/input-number-component';
+import { InputPhoneComponent } from './src/input-set/input-phone/input-phone-component';
+import { InputRadioButtonComponent } from './src/input-set/input-radio-button/input-radio-button-component';
+import { InputTextComponent } from './src/input-set/input-text/input-text-component';
 import { InputGenerator } from './src/service/input-generator';
 
 interface CardProps {
