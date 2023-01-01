@@ -173,7 +173,7 @@ export class InputGenerator {
             input = { input } 
             labelStyle = { dropdownComponent.labelStyle }
             itemTextStyle = { dropdownComponent.itemTextStyle }
-            listHeaderComponentStyleBackgroundColor = { dropdownComponent.listHeaderComponentStyleBackgroundColor }
+            listHeaderComponentStyle = { dropdownComponent.listHeaderComponentStyle }
             inputDropdownCurrentSelectionTextStyle = { dropdownComponent.inputDropdownCurrentSelectionTextStyle }
             errorStyle = { dropdownComponent.errorStyle }
             modalContainer = { dropdownComponent.modalContainer }
@@ -219,7 +219,7 @@ export class InputGenerator {
             input = { input } 
             labelStyle = { phoneComponent.labelStyle }
             itemTextStyle = { phoneComponent.itemTextStyle }
-            listHeaderComponentStyleBackgroundColor = { phoneComponent.listHeaderComponentStyleBackgroundColor }
+            listHeaderComponentStyle = { phoneComponent.listHeaderComponentStyle }
             inputDropdownCurrentSelectionTextStyle = { phoneComponent.inputDropdownCurrentSelectionTextStyle }
             errorStyle = { phoneComponent.errorStyle }
             styleModal = { phoneComponent.styleModal }

@@ -71,7 +71,7 @@ const ItemCountryElement: React.FC<PropsItemCountry> = ( props: PropsItemCountry
  * * `selectedItemStyle?` *(StyleProp<ViewStyle>)* : Le style associé à un item sélectionné.
  * * `unselectedItemStyle?` *(StyleProp<ViewStyle>)* : Le style associé à un item non sélectionné.
  * * `itemTextStyle?` *(StyleProp<TextStyle>)* : Le style du texte associé à un item.
- * * `listHeaderComponentStyleBackgroundColor?` *(string)* : La couleur de fond associé au header de la flatlist.
+ * * `listHeaderComponentStyle?` *(StyleProp<ViewStyle>)* : La couleur de fond associé au header de la flatlist.
  * * `searchBarStyleText?` *(StyleProp<TextStyle>)* : Style relatif au texte de la saisie.
  * * `searchBarStyleContainer?` *(StyleProp<ViewStyle>)* : Style relatif au container de l'input permettant la recherche.
  * 
@@ -114,7 +114,7 @@ const ItemCountryElement: React.FC<PropsItemCountry> = ( props: PropsItemCountry
                     styleContainer = { props.searchBarStyleContainer }
                 /> 
             }
-            ListHeaderComponentStyle = {{ backgroundColor: props.listHeaderComponentStyleBackgroundColor, paddingBottom: 15 }}
+            ListHeaderComponentStyle = { props.listHeaderComponentStyle }
             stickyHeaderIndices = {[0]}
         />
     );
@@ -133,7 +133,7 @@ const ItemCountryElement: React.FC<PropsItemCountry> = ( props: PropsItemCountry
  * * `selectedItemStyle?` *(StyleProp<ViewStyle>)* : Le style associé à un item sélectionné.
  * * `unselectedItemStyle?` *(StyleProp<ViewStyle>)* : Le style associé à un item non sélectionné.
  * * `itemTextStyle?` *(StyleProp<TextStyle>)* : Le style du texte associé à un item.
- * * `listHeaderComponentStyleBackgroundColor?` *(string)* : La couleur de fond associé au header de la flatlist.
+ * * `listHeaderComponentStyle?` *(StyleProp<ViewStyle>)* : La couleur de fond associé au header de la flatlist.
  * * `inputDropdownCurrentSelectionTextStyle` *(StyleProp<TextStyle>)* : Le style du texte associée à la sélection actuelle du dropdown.
  * * `inputDropdownTextFontSize` *(number)* : LA taille de police du texte associée à la sélection actuelle du dropdown.
  * * `errorStyle?` *(StyleProp<TextStyle>)* : Le style associé à l'affichage de l'erreur généré par le dropdown.
@@ -198,7 +198,7 @@ const ItemCountryElement: React.FC<PropsItemCountry> = ( props: PropsItemCountry
                             setTitle = { setTitle }
                             setError = { setError }
                             itemTextStyle = { props.itemTextStyle }
-                            listHeaderComponentStyleBackgroundColor = { props.listHeaderComponentStyleBackgroundColor }
+                            listHeaderComponentStyle = { props.listHeaderComponentStyle }
                             searchBarStyleText = { props.searchBarStyleText }
                             searchBarStyleContainer = { props.searchBarStyleContainer }
                         />

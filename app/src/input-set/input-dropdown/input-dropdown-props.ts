@@ -36,7 +36,7 @@ import { InputDropdownComponent } from "./input-dropdown-component"
  * * `selectedItemStyle?` *(StyleProp<ViewStyle>)* : Le style associé à un item sélectionné.
  * * `unselectedItemStyle?` *(StyleProp<ViewStyle>)* : Le style associé à un item non sélectionné.
  * * `itemTextStyle?` *(StyleProp<TextStyle>)* : Le style du texte associé à un item.
- * * `listHeaderComponentStyleBackgroundColor?` *(string)* : La couleur de fond associé au header de la flatlist.
+ * * `listHeaderComponentStyle?` *(StyleProp<ViewStyle>)* : La couleur de fond associé au header de la flatlist.
  * * `searchBarStyleText?` *(StyleProp<TextStyle>)* : Style relatif au texte de la saisie.
  * * `searchBarStyleContainer?` *(StyleProp<ViewStyle>)* : Style relatif au container de l'input permettant la recherche.
 */
@@ -54,7 +54,7 @@ export interface PropsItemListInputDropDown {
     /** Le style du texte associé à un item. */
     itemTextStyle?: StyleProp<TextStyle>,
     /** La couleur de fond associé au header de la flatlist. */
-    listHeaderComponentStyleBackgroundColor?: string
+    listHeaderComponentStyle?: StyleProp<ViewStyle>
     /** Style relatif au texte de la saisie. */
     searchBarStyleText?: StyleProp<TextStyle>,
     /** Style relatif au container de l'input permettant la recherche. */
@@ -67,7 +67,7 @@ export interface PropsItemListInputDropDown {
  * * `selectedItemStyle?` *(StyleProp<ViewStyle>)* : Le style associé à un item sélectionné.
  * * `unselectedItemStyle?` *(StyleProp<ViewStyle>)* : Le style associé à un item non sélectionné.
  * * `itemTextStyle?` *(StyleProp<TextStyle>)* : Le style du texte associé à un item.
- * * `listHeaderComponentStyleBackgroundColor?` *(string)* : La couleur de fond associé au header de la flatlist.
+ * * `listHeaderComponentStyle?` *(StyleProp<ViewStyle>)* : La couleur de fond associé au header de la flatlist.
  * * `inputDropdownCurrentSelectionTextStyle` *(StyleProp<TextStyle>)* : Le style du texte associée à la sélection actuelle du dropdown.
  * * `inputDropdownTextFontSize` *(number)* : LA taille de police du texte associée à la sélection actuelle du dropdown.
  * * `errorStyle?` *(StyleProp<TextStyle>)* : Le style associé à l'affichage de l'erreur généré par le dropdown.
@@ -93,7 +93,7 @@ export interface PropsInputDropdown {
     /** Le style du texte associé à un item. */
     itemTextStyle?: StyleProp<TextStyle>,
     /** La couleur de fond associé au header de la flatlist. */
-    listHeaderComponentStyleBackgroundColor?: string
+    listHeaderComponentStyle?: StyleProp<ViewStyle>
     /** Le style du texte associée à la sélection actuelle du dropdown. */
     inputDropdownCurrentSelectionTextStyle?: StyleProp<TextStyle>,
     /** Le style associé à l'affichage de l'erreur généré par le dropdown. */

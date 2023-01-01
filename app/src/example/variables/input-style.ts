@@ -87,7 +87,10 @@ export const dropdownComponent = {
     itemTextStyle: {
         color: color.text
     },
-    listHeaderComponentStyleBackgroundColor: color.background,
+    listHeaderComponentStyle: { 
+        backgroundColor: color.background, 
+        paddingBottom: 15 
+    },
     inputDropdownCurrentSelectionTextStyle: {
         textAlign: "center",
         color: color.secondary,
@@ -182,7 +185,10 @@ export const phoneComponent = {
     itemTextStyle: {
         color: color.text
     },
-    listHeaderComponentStyleBackgroundColor: color.background,
+    listHeaderComponentStyle: { 
+        backgroundColor: color.background, 
+        paddingBottom: 15 
+    },
     inputDropdownCurrentSelectionTextStyle: {
         textAlign: "center",
         color: color.secondary,
