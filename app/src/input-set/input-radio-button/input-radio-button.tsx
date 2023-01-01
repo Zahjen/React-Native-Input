@@ -7,7 +7,6 @@ import { InputRadioButtonController } from "./input-radio-button-controller";
 import { PropsInputRadioButton, PropsRadioButtonElement } from "./input-radio-button-props";
 import Fontisto from "react-native-vector-icons/Fontisto";
 import { IMargin } from "../../interface/object/margin";
-import { color } from "../../example/variables/color";
 
 
 /**
@@ -152,7 +151,7 @@ export const radioButtonRowView = (margin?: IMargin): StyleProp<ViewStyle> => {
 }
 
 InputRadioButton.defaultProps = {
-    unselectedRadioColor: color.tertiary,
+    unselectedRadioColor: "#6c7b92",
     circleRadioSize: 20,
     marginRadioRight: 7,
     margin: {

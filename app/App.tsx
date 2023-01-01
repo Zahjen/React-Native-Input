@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, SafeAreaView, ScrollView, KeyboardAvoidingView } from 'react-native';
 import { Example } from './src/example/example-data';
-import { color } from './src/example/variables/color';
 import Spacer from './src/element/spacer';
 import { InputDateTimeComponent } from './src/input-set/input-date-time/input-date-time-component';
 import { InputDropdownComponent } from './src/input-set/input-dropdown/input-dropdown-component';
@@ -110,19 +109,19 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
       flex: 1,
-      backgroundColor: color.background,
+      backgroundColor: "#303f56",
   },
   view: {
       paddingVertical: 30,
       paddingHorizontal: 20
   },
   title: {
-      color: color.text,
+      color: "#f0f0f0",
       fontWeight: "bold",
       fontSize: 20
   },
   card: {
-    backgroundColor: color.primary,
+    backgroundColor: "#26354c",
     paddingVertical: 15,
     paddingHorizontal: 15,
     borderRadius: 15

@@ -1,6 +1,5 @@
 import React from "react";
 import { FlatList, Pressable, StyleProp, Text, TextInput, View, ViewStyle } from "react-native";
-import { color } from "../../example/variables/color";
 import ModalElement from "../../element/modal-element";
 import Spacer from "../../element/spacer";
 import { frenchCountries, IFrenchCountryList } from "../../variables/french-countries";
@@ -238,8 +237,8 @@ ItemCountryElement.defaultProps = {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "flex-start",
-        backgroundColor: color.dropdownBackgroundSelection,
-        borderColor: color.dropdownBorderSelection,
+        backgroundColor: "#9e867d",
+        borderColor: "#ea9576",
         borderWidth: 0.5,
         borderRadius: 7,
         paddingHorizontal: 10

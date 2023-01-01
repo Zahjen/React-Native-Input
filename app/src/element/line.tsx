@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { color } from "../example/variables/color";
 import { IMargin } from "../interface/object/margin";
 
 /**
@@ -60,7 +59,7 @@ const Line: React.FC<Props> = (props: Props): JSX.Element => {
 
 /** Les paramètres par défaut que prendra le composant */
 Line.defaultProps = {
-    color: color.text,
+    color: "#f0f0f0",
     margin: {
         left: 0,
         right: 0,
